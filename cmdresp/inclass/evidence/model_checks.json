@@ -1,0 +1,40 @@
+[
+  {
+    "name": "hand_scale",
+    "status": "PASS",
+    "actual": [
+      3231711232,
+      3212836864,
+      1084227584
+    ],
+    "expected": [
+      3231711232,
+      3212836864,
+      1084227584
+    ]
+  },
+  {
+    "name": "hand_reconfigure",
+    "status": "PASS",
+    "actual": [
+      1077936128,
+      1073741824,
+      1056964608
+    ],
+    "expected": [
+      1077936128,
+      1073741824,
+      1056964608
+    ]
+  },
+  {
+    "name": "separate_rounding",
+    "status": "PASS",
+    "actual": [
+      0
+    ],
+    "expected": [
+      0
+    ]
+  }
+]

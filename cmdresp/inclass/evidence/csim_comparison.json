@@ -1,0 +1,652 @@
+[
+  {
+    "scenario": "basic_hand",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "end_only",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 3,
+    "output_beats": 0,
+    "recovery_for": null
+  },
+  {
+    "scenario": "multiple_data_repeated_tx",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 17,
+    "output_beats": 12,
+    "recovery_for": null
+  },
+  {
+    "scenario": "reconfigure_reset",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 25,
+    "output_beats": 18,
+    "recovery_for": null
+  },
+  {
+    "scenario": "random_0",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 28,
+    "output_beats": 23,
+    "recovery_for": null
+  },
+  {
+    "scenario": "random_1",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 39,
+    "output_beats": 34,
+    "recovery_for": null
+  },
+  {
+    "scenario": "random_2",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 50,
+    "output_beats": 45,
+    "recovery_for": null
+  },
+  {
+    "scenario": "random_3",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 61,
+    "output_beats": 56,
+    "recovery_for": null
+  },
+  {
+    "scenario": "random_4",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 72,
+    "output_beats": 67,
+    "recovery_for": null
+  },
+  {
+    "scenario": "random_5",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 83,
+    "output_beats": 78,
+    "recovery_for": null
+  },
+  {
+    "scenario": "separate_rounding",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 12,
+    "output_beats": 7,
+    "recovery_for": null
+  },
+  {
+    "scenario": "minimum_sizes",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 12,
+    "output_beats": 7,
+    "recovery_for": null
+  },
+  {
+    "scenario": "maximum_sizes",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 1035,
+    "output_beats": 1030,
+    "recovery_for": null
+  },
+  {
+    "scenario": "unconfigured",
+    "status": "PASS",
+    "halted": 1,
+    "error": 5,
+    "tx_id": 77,
+    "consumed": 3,
+    "output_beats": 0,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_unconfigured",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "unconfigured"
+  },
+  {
+    "scenario": "header_early_before_tx",
+    "status": "PASS",
+    "halted": 1,
+    "error": 1,
+    "tx_id": 0,
+    "consumed": 12,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_header_early_before_tx",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "header_early_before_tx"
+  },
+  {
+    "scenario": "header_early_after_tx",
+    "status": "PASS",
+    "halted": 1,
+    "error": 1,
+    "tx_id": 77,
+    "consumed": 13,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_header_early_after_tx",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "header_early_after_tx"
+  },
+  {
+    "scenario": "header_missing",
+    "status": "PASS",
+    "halted": 1,
+    "error": 2,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_header_missing",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "header_missing"
+  },
+  {
+    "scenario": "unknown_command",
+    "status": "PASS",
+    "halted": 1,
+    "error": 3,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_unknown_command",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "unknown_command"
+  },
+  {
+    "scenario": "config_zero",
+    "status": "PASS",
+    "halted": 1,
+    "error": 4,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_config_zero",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "config_zero"
+  },
+  {
+    "scenario": "config_too_large",
+    "status": "PASS",
+    "halted": 1,
+    "error": 4,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_config_too_large",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "config_too_large"
+  },
+  {
+    "scenario": "data_zero",
+    "status": "PASS",
+    "halted": 1,
+    "error": 4,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_data_zero",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "data_zero"
+  },
+  {
+    "scenario": "data_too_large",
+    "status": "PASS",
+    "halted": 1,
+    "error": 4,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_data_too_large",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "data_too_large"
+  },
+  {
+    "scenario": "end_nonzero",
+    "status": "PASS",
+    "halted": 1,
+    "error": 4,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_end_nonzero",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "end_nonzero"
+  },
+  {
+    "scenario": "config_too_small",
+    "status": "PASS",
+    "halted": 1,
+    "error": 4,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_config_too_small",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "config_too_small"
+  },
+  {
+    "scenario": "config_early",
+    "status": "PASS",
+    "halted": 1,
+    "error": 6,
+    "tx_id": 77,
+    "consumed": 15,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_config_early",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "config_early"
+  },
+  {
+    "scenario": "config_missing",
+    "status": "PASS",
+    "halted": 1,
+    "error": 7,
+    "tx_id": 77,
+    "consumed": 16,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_config_missing",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "config_missing"
+  },
+  {
+    "scenario": "data_early",
+    "status": "PASS",
+    "halted": 1,
+    "error": 8,
+    "tx_id": 77,
+    "consumed": 15,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_data_early",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "data_early"
+  },
+  {
+    "scenario": "data_missing",
+    "status": "PASS",
+    "halted": 1,
+    "error": 9,
+    "tx_id": 77,
+    "consumed": 15,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_data_missing",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "data_missing"
+  },
+  {
+    "scenario": "mask_header_keep",
+    "status": "PASS",
+    "halted": 1,
+    "error": 10,
+    "tx_id": 0,
+    "consumed": 12,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_mask_header_keep",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "mask_header_keep"
+  },
+  {
+    "scenario": "mask_header_strb",
+    "status": "PASS",
+    "halted": 1,
+    "error": 10,
+    "tx_id": 0,
+    "consumed": 12,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_mask_header_strb",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "mask_header_strb"
+  },
+  {
+    "scenario": "mask_config_keep",
+    "status": "PASS",
+    "halted": 1,
+    "error": 10,
+    "tx_id": 77,
+    "consumed": 15,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_mask_config_keep",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "mask_config_keep"
+  },
+  {
+    "scenario": "mask_config_strb",
+    "status": "PASS",
+    "halted": 1,
+    "error": 10,
+    "tx_id": 77,
+    "consumed": 15,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_mask_config_strb",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "mask_config_strb"
+  },
+  {
+    "scenario": "mask_data_keep",
+    "status": "PASS",
+    "halted": 1,
+    "error": 10,
+    "tx_id": 77,
+    "consumed": 15,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_mask_data_keep",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "mask_data_keep"
+  },
+  {
+    "scenario": "mask_data_strb",
+    "status": "PASS",
+    "halted": 1,
+    "error": 10,
+    "tx_id": 77,
+    "consumed": 15,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_mask_data_strb",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "mask_data_strb"
+  },
+  {
+    "scenario": "mask_precedes_framing",
+    "status": "PASS",
+    "halted": 1,
+    "error": 10,
+    "tx_id": 0,
+    "consumed": 12,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_mask_precedes_framing",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "mask_precedes_framing"
+  },
+  {
+    "scenario": "framing_precedes_opcode",
+    "status": "PASS",
+    "halted": 1,
+    "error": 2,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_framing_precedes_opcode",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "framing_precedes_opcode"
+  },
+  {
+    "scenario": "opcode_precedes_count",
+    "status": "PASS",
+    "halted": 1,
+    "error": 3,
+    "tx_id": 77,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_opcode_precedes_count",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "opcode_precedes_count"
+  },
+  {
+    "scenario": "count_precedes_state",
+    "status": "PASS",
+    "halted": 1,
+    "error": 4,
+    "tx_id": 77,
+    "consumed": 3,
+    "output_beats": 0,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_count_precedes_state",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "count_precedes_state"
+  },
+  {
+    "scenario": "queued_suffix_not_consumed",
+    "status": "PASS",
+    "halted": 1,
+    "error": 9,
+    "tx_id": 77,
+    "consumed": 15,
+    "output_beats": 9,
+    "recovery_for": null
+  },
+  {
+    "scenario": "recover_queued_suffix_not_consumed",
+    "status": "PASS",
+    "halted": 0,
+    "error": 0,
+    "tx_id": 0,
+    "consumed": 14,
+    "output_beats": 9,
+    "recovery_for": "queued_suffix_not_consumed"
+  }
+]

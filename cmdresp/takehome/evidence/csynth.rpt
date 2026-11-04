@@ -1,0 +1,319 @@
+
+
+================================================================
+== Synthesis Summary Report of 'accelerator'
+================================================================
++ General Information: 
+    * Date:           Wed Nov  4 14:49:56 2026
+    * Version:        2026.1 (Build 6493734 on Jun 16 2026)
+    * Project:        hls_project
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg484-1
+    
+
+* Performance & Resource Estimates: 
++-----------------------------------------------------------+--------+---------------+----------+---------+------+----------+---------+-----------+-------+---------+--------+-----------+-----------+-----+
+|                          Modules                          |  Issue |               | Iteration|         | Trip |          |       Latency       |       |         |        |           |           |     |
+|                          & Loops                          |  Type  | Violation Type|  Latency | Interval| Count| Pipelined| (cycles)|    (ns)   | Slack |  BRAM   |   DSP  |     FF    |    LUT    | URAM|
++-----------------------------------------------------------+--------+---------------+----------+---------+------+----------+---------+-----------+-------+---------+--------+-----------+-----------+-----+
+|+ accelerator                                              |  Timing|              -|         -|        -|     -|        no|        -|          -|  -2.98|  1 (~0%)|  9 (4%)|  3597 (3%)|  4745 (8%)|    -|
+| + p_anonymous_namespace_execute                           |  Timing|              -|         -|        -|     -|        no|        -|          -|  -2.98|  1 (~0%)|  9 (4%)|  3363 (3%)|  4282 (8%)|    -|
+|  o COMMANDS                                               |       -|              -|         -|        -|     -|        no|        -|          -|   7.30|        -|       -|          -|          -|    -|
+|   + p_anonymous_namespace_execute_Pipeline_READ_HEADER    |       -|              -|         -|        5|     -|       yes|        5|     51.399|   3.05|        -|       -|  137 (~0%)|  374 (~0%)|    -|
+|    o READ_HEADER                                          |       -|              -|         1|        1|     3|       yes|        3|     30.839|   7.30|        -|       -|          -|          -|    -|
+|   + p_anonymous_namespace_execute_Pipeline_READ_CONFIG    |       -|              -|         -|        -|     -|        no|        -|          -|   2.18|        -|       -|  298 (~0%)|   850 (1%)|    -|
+|    o READ_CONFIG                                          |       -|              -|         2|        1|     -|       yes|        -|          -|   7.30|        -|       -|          -|          -|    -|
+|   + write_axi4_stream_impl                                |       -|              -|         -|        3|     -|        no|        3|     30.839|   6.01|        -|       -|    4 (~0%)|   70 (~0%)|    -|
+|   + p_anonymous_namespace_execute_Pipeline_PROCESS_DATA   |  Timing|              -|         -|     1031|     -|        no|     1031|  1.060e+04|  -2.98|        -|  9 (4%)|  1226 (1%)|  1001 (1%)|    -|
+|    o PROCESS_DATA                                         |       -|              -|         6|        1|  1024|       yes|     1028|  1.057e+04|   7.30|        -|       -|          -|          -|    -|
+|   + p_anonymous_namespace_execute_Pipeline_WRITE_RESULTS  |       -|              -|         -|        -|     -|       yes|        -|          -|   1.57|        -|       -|   36 (~0%)|  166 (~0%)|    -|
+|    o WRITE_RESULTS                                        |       -|              -|         2|        1|     -|       yes|        -|          -|   7.30|        -|       -|          -|          -|    -|
++-----------------------------------------------------------+--------+---------------+----------+---------+------+----------+---------+-----------+-------+---------+--------+-----------+-----------+-----+
+    Name Prefix: '+' for module, 'o' for loop, '*' for dataflow
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+---------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register      | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+---------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL          | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER          | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER        | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR        | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | halted        | 0x10   | 32    | R      | Data signal of halted            |                                                                      |
+| s_axi_control | halted_ctrl   | 0x14   | 32    | R      | Control signal of halted         | 0=halted_ap_vld                                                      |
+| s_axi_control | error         | 0x20   | 32    | R      | Data signal of error             |                                                                      |
+| s_axi_control | error_ctrl    | 0x24   | 32    | R      | Control signal of error          | 0=error_ap_vld                                                       |
+| s_axi_control | tx_id         | 0x30   | 32    | R      | Data signal of tx_id             |                                                                      |
+| s_axi_control | tx_id_ctrl    | 0x34   | 32    | R      | Control signal of tx_id          | 0=tx_id_ap_vld                                                       |
+| s_axi_control | consumed      | 0x40   | 32    | R      | Data signal of consumed          |                                                                      |
+| s_axi_control | consumed_ctrl | 0x44   | 32    | R      | Control signal of consumed       | 0=consumed_ap_vld                                                    |
++---------------+---------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* AXIS
++------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| Interface  | Direction | Register Mode | TDATA | TKEEP | TLAST | TREADY | TSTRB | TVALID |
++------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| in_stream  | in        | both          | 32    | 4     | 1     | 1      | 4     | 1      |
+| out_stream | out       | both          | 32    | 4     | 1     | 1      | 4     | 1      |
++------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++------------+-----------+-----------------------------------------------------------------------------+
+| Argument   | Direction | Datatype                                                                    |
++------------+-----------+-----------------------------------------------------------------------------+
+| in_stream  | in        | stream<hls::axis<ap_int<32>, 0UL, 0UL, 0UL, (unsigned char)'8', false>, 0>& |
+| out_stream | out       | stream<hls::axis<ap_int<32>, 0UL, 0UL, 0UL, (unsigned char)'8', false>, 0>& |
+| halted     | out       | &                                                                           |
+| error      | out       | &                                                                           |
+| tx_id      | out       | &                                                                           |
+| consumed   | out       | &                                                                           |
++------------+-----------+-----------------------------------------------------------------------------+
+
+* SW-to-HW Mapping
++------------+---------------+-----------+-----------------------------------------+
+| Argument   | HW Interface  | HW Type   | HW Info                                 |
++------------+---------------+-----------+-----------------------------------------+
+| in_stream  | in_stream     | interface |                                         |
+| out_stream | out_stream    | interface |                                         |
+| halted     | s_axi_control | register  | name=halted offset=0x10 range=32        |
+| halted     | s_axi_control | register  | name=halted_ctrl offset=0x14 range=32   |
+| error      | s_axi_control | register  | name=error offset=0x20 range=32         |
+| error      | s_axi_control | register  | name=error_ctrl offset=0x24 range=32    |
+| tx_id      | s_axi_control | register  | name=tx_id offset=0x30 range=32         |
+| tx_id      | s_axi_control | register  | name=tx_id_ctrl offset=0x34 range=32    |
+| consumed   | s_axi_control | register  | name=consumed offset=0x40 range=32      |
+| consumed   | s_axi_control | register  | name=consumed_ctrl offset=0x44 range=32 |
++------------+---------------+-----------+-----------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------------------+-----+--------+---------------+--------+-----------+---------+
+| Name                                                     | DSP | Pragma | Variable      | Op     | Impl      | Latency |
++----------------------------------------------------------+-----+--------+---------------+--------+-----------+---------+
+| + accelerator                                            | 9   |        |               |        |           |         |
+|   icmp_ln181_fu_137_p2                                   |     |        | icmp_ln181    | setne  | auto      | 0       |
+|  + p_anonymous_namespace_execute                         | 9   |        |               |        |           |         |
+|    add_ln88_fu_955_p2                                    |     |        | add_ln88      | add    | fabric    | 0       |
+|    icmp_ln88_fu_961_p2                                   |     |        | icmp_ln88     | setlt  | auto      | 0       |
+|    icmp_ln94_fu_967_p2                                   |     |        | icmp_ln94     | setne  | auto      | 0       |
+|    icmp_ln94_1_fu_973_p2                                 |     |        | icmp_ln94_1   | setne  | auto      | 0       |
+|    icmp_ln94_2_fu_979_p2                                 |     |        | icmp_ln94_2   | setlt  | auto      | 0       |
+|    and_ln94_fu_985_p2                                    |     |        | and_ln94      | and    | auto      | 0       |
+|    or_ln94_fu_991_p2                                     |     |        | or_ln94       | or     | auto      | 0       |
+|    grp_fu_717_p2                                         |     |        | add_ln15      | add    | fabric    | 0       |
+|    grp_fu_724_p2                                         |     |        | icmp_ln100    | seteq  | auto      | 0       |
+|    taps_40_fu_1129_p3                                    |     |        | taps_40       | select | auto_sel  | 0       |
+|    icmp_ln117_fu_1145_p2                                 |     |        | icmp_ln117    | seteq  | auto      | 0       |
+|    taps_41_fu_1151_p3                                    |     |        | taps_41       | select | auto_sel  | 0       |
+|    icmp_ln117_1_fu_1159_p2                               |     |        | icmp_ln117_1  | setlt  | auto      | 0       |
+|    taps_42_fu_1164_p3                                    |     |        | taps_42       | select | auto_sel  | 0       |
+|    icmp_ln117_2_fu_1181_p2                               |     |        | icmp_ln117_2  | seteq  | auto      | 0       |
+|    taps_43_fu_1187_p3                                    |     |        | taps_43       | select | auto_sel  | 0       |
+|    icmp_ln117_3_fu_1195_p2                               |     |        | icmp_ln117_3  | setlt  | auto      | 0       |
+|    taps_44_fu_1200_p3                                    |     |        | taps_44       | select | auto_sel  | 0       |
+|    icmp_ln117_4_fu_1208_p2                               |     |        | icmp_ln117_4  | setlt  | auto      | 0       |
+|    taps_45_fu_1213_p3                                    |     |        | taps_45       | select | auto_sel  | 0       |
+|    icmp_ln117_5_fu_1221_p2                               |     |        | icmp_ln117_5  | setlt  | auto      | 0       |
+|    taps_46_fu_1226_p3                                    |     |        | taps_46       | select | auto_sel  | 0       |
+|    icmp_ln117_6_fu_1243_p2                               |     |        | icmp_ln117_6  | seteq  | auto      | 0       |
+|    taps_47_fu_1249_p3                                    |     |        | taps_47       | select | auto_sel  | 0       |
+|    icmp_ln95_fu_1007_p2                                  |     |        | icmp_ln95     | seteq  | auto      | 0       |
+|    add_ln94_fu_1013_p2                                   |     |        | add_ln94      | add    | fabric    | 0       |
+|    icmp_ln94_3_fu_1029_p2                                |     |        | icmp_ln94_3   | seteq  | auto      | 0       |
+|    icmp_ln96_fu_1038_p2                                  |     |        | icmp_ln96     | setne  | auto      | 0       |
+|    or_ln96_fu_1044_p2                                    |     |        | or_ln96       | or     | auto      | 0       |
+|    grp_fu_717_p2                                         |     |        | add_ln15_1    | add    | fabric    | 0       |
+|    grp_fu_724_p2                                         |     |        | icmp_ln124    | seteq  | auto      | 0       |
+|   + p_anonymous_namespace_execute_Pipeline_READ_HEADER   | 0   |        |               |        |           |         |
+|     icmp_ln80_fu_217_p2                                  |     |        | icmp_ln80     | seteq  | auto      | 0       |
+|     add_ln80_fu_223_p2                                   |     |        | add_ln80      | add    | fabric    | 0       |
+|     add_ln81_out                                         |     |        | add_ln81      | add    | fabric    | 0       |
+|     icmp_ln82_fu_258_p2                                  |     |        | icmp_ln82     | seteq  | auto      | 0       |
+|     select_ln82_fu_264_p3                                |     |        | select_ln82   | select | auto_sel  | 0       |
+|     and_ln14_fu_273_p2                                   |     |        | and_ln14      | and    | auto      | 0       |
+|     icmp_ln14_fu_279_p2                                  |     |        | icmp_ln14     | seteq  | auto      | 0       |
+|     icmp_ln15_fu_285_p2                                  |     |        | icmp_ln15     | setne  | auto      | 0       |
+|     and_ln15_fu_291_p2                                   |     |        | and_ln15      | and    | auto      | 0       |
+|     or_ln16_fu_297_p2                                    |     |        | or_ln16       | or     | auto      | 0       |
+|     icmp_ln85_fu_309_p2                                  |     |        | icmp_ln85     | seteq  | auto      | 0       |
+|     or_ln85_fu_315_p2                                    |     |        | or_ln85       | or     | auto      | 0       |
+|     h_3_fu_321_p3                                        |     |        | h_3           | select | auto_sel  | 0       |
+|     h_4_fu_329_p3                                        |     |        | h_4           | select | auto_sel  | 0       |
+|   + p_anonymous_namespace_execute_Pipeline_READ_CONFIG   | 0   |        |               |        |           |         |
+|     icmp_ln100_fu_434_p2                                 |     |        | icmp_ln100    | setlt  | auto      | 0       |
+|     add_ln100_fu_439_p2                                  |     |        | add_ln100     | add    | fabric    | 0       |
+|     add_ln101_fu_555_p2                                  |     |        | add_ln101     | add    | fabric    | 0       |
+|     and_ln14_fu_461_p2                                   |     |        | and_ln14      | and    | auto      | 0       |
+|     icmp_ln14_fu_467_p2                                  |     |        | icmp_ln14     | seteq  | auto      | 0       |
+|     icmp_ln15_fu_473_p2                                  |     |        | icmp_ln15     | setne  | auto      | 0       |
+|     and_ln15_fu_478_p2                                   |     |        | and_ln15      | and    | auto      | 0       |
+|     or_ln16_fu_484_p2                                    |     |        | or_ln16       | or     | auto      | 0       |
+|     icmp_ln20_fu_498_p2                                  |     |        | icmp_ln20     | seteq  | auto      | 0       |
+|     icmp_ln105_fu_504_p2                                 |     |        | icmp_ln105    | seteq  | auto      | 0       |
+|     taps_17_fu_585_p3                                    |     |        | taps_17       | select | auto_sel  | 0       |
+|     icmp_ln105_1_fu_510_p2                               |     |        | icmp_ln105_1  | seteq  | auto      | 0       |
+|     raw_fu_591_p3                                        |     |        | raw           | select | auto_sel  | 0       |
+|     icmp_ln105_2_fu_516_p2                               |     |        | icmp_ln105_2  | seteq  | auto      | 0       |
+|     raw_8_fu_597_p3                                      |     |        | raw_8         | select | auto_sel  | 0       |
+|     icmp_ln105_3_fu_522_p2                               |     |        | icmp_ln105_3  | seteq  | auto      | 0       |
+|     raw_9_fu_603_p3                                      |     |        | raw_9         | select | auto_sel  | 0       |
+|     icmp_ln105_4_fu_528_p2                               |     |        | icmp_ln105_4  | seteq  | auto      | 0       |
+|     raw_10_fu_609_p3                                     |     |        | raw_10        | select | auto_sel  | 0       |
+|     icmp_ln105_5_fu_534_p2                               |     |        | icmp_ln105_5  | seteq  | auto      | 0       |
+|     raw_11_fu_615_p3                                     |     |        | raw_11        | select | auto_sel  | 0       |
+|     icmp_ln105_6_fu_540_p2                               |     |        | icmp_ln105_6  | seteq  | auto      | 0       |
+|     raw_12_fu_621_p3                                     |     |        | raw_12        | select | auto_sel  | 0       |
+|     icmp_ln105_7_fu_546_p2                               |     |        | icmp_ln105_7  | seteq  | auto      | 0       |
+|     raw_13_fu_627_p3                                     |     |        | raw_13        | select | auto_sel  | 0       |
+|   + p_anonymous_namespace_execute_Pipeline_PROCESS_DATA  | 9   |        |               |        |           |         |
+|     icmp_ln124_fu_544_p2                                 |     |        | icmp_ln124    | setlt  | auto      | 0       |
+|     add_ln124_fu_549_p2                                  |     |        | add_ln124     | add    | fabric    | 0       |
+|     add_ln127_fu_675_p2                                  |     |        | add_ln127     | add    | fabric    | 0       |
+|     and_ln14_fu_571_p2                                   |     |        | and_ln14      | and    | auto      | 0       |
+|     icmp_ln14_fu_577_p2                                  |     |        | icmp_ln14     | seteq  | auto      | 0       |
+|     icmp_ln15_fu_583_p2                                  |     |        | icmp_ln15     | setne  | auto      | 0       |
+|     and_ln15_fu_588_p2                                   |     |        | and_ln15      | and    | auto      | 0       |
+|     or_ln16_fu_594_p2                                    |     |        | or_ln16       | or     | auto      | 0       |
+|     icmp_ln20_fu_608_p2                                  |     |        | icmp_ln20     | seteq  | auto      | 0       |
+|     mul_32s_16s_32_2_1_U46                               | 2   |        | product_8     | mul    | auto      | 1       |
+|     mul_16s_16s_32_1_1_U50                               | 1   |        | product       | mul    | auto      | 0       |
+|     mul_16s_16s_32_1_1_U47                               | 1   |        | product_2     | mul    | auto      | 0       |
+|     mac_muladd_16s_16s_32s_33_4_1_U51                    | 1   |        | product_3     | mul    | dsp_slice | 3       |
+|     mac_muladd_16s_16s_32s_33_4_1_U51                    | 1   |        | sext_ln141_17 | sext   | dsp_slice | 3       |
+|     mac_muladd_16s_16s_32s_33_4_1_U52                    | 1   |        | product_4     | mul    | dsp_slice | 3       |
+|     mac_muladd_16s_16s_32s_33_4_1_U52                    | 1   |        | sext_ln141_18 | sext   | dsp_slice | 3       |
+|     mul_16s_16s_32_1_1_U48                               | 1   |        | product_5     | mul    | auto      | 0       |
+|     mul_16s_16s_32_1_1_U49                               | 1   |        | product_6     | mul    | auto      | 0       |
+|     mac_muladd_16s_16s_32s_33_4_1_U53                    | 1   |        | product_7     | mul    | dsp_slice | 3       |
+|     mac_muladd_16s_16s_32s_33_4_1_U53                    | 1   |        | sext_ln142    | sext   | dsp_slice | 3       |
+|     mac_muladd_16s_16s_32s_33_4_1_U53                    | 1   |        | add_ln142     | add    | dsp_slice | 3       |
+|     mac_muladd_16s_16s_32s_33_4_1_U52                    | 1   |        | add_ln142_1   | add    | dsp_slice | 3       |
+|     add_ln142_2_fu_739_p2                                |     |        | add_ln142_2   | add    | fabric    | 0       |
+|     mac_muladd_16s_16s_32s_33_4_1_U51                    | 1   |        | add_ln142_3   | add    | dsp_slice | 3       |
+|     add_ln142_4_fu_748_p2                                |     |        | add_ln142_4   | add    | fabric    | 0       |
+|     add_ln142_5_fu_758_p2                                |     |        | add_ln142_5   | add    | fabric    | 0       |
+|     add_ln142_6_fu_770_p2                                |     |        | add_ln142_6   | add    | fabric    | 0       |
+|     acc_1_fu_774_p2                                      |     |        | acc_1         | add    | fabric    | 0       |
+|     sub_ln36_fu_788_p2                                   |     |        | sub_ln36      | sub    | fabric    | 0       |
+|     magnitude_fu_794_p3                                  |     |        | magnitude     | select | auto_sel  | 0       |
+|     icmp_ln39_fu_816_p2                                  |     |        | icmp_ln39     | setgt  | auto      | 0       |
+|     add_ln39_fu_822_p2                                   |     |        | add_ln39      | add    | fabric    | 0       |
+|     icmp_ln39_1_fu_828_p2                                |     |        | icmp_ln39_1   | seteq  | auto      | 0       |
+|     and_ln39_fu_841_p2                                   |     |        | and_ln39      | and    | auto      | 0       |
+|     or_ln39_fu_846_p2                                    |     |        | or_ln39       | or     | auto      | 0       |
+|     q_fu_851_p3                                          |     |        | q             | select | auto_sel  | 0       |
+|     result_2_fu_861_p2                                   |     |        | result_2      | sub    | fabric    | 0       |
+|     result_3_fu_867_p3                                   |     |        | result_3      | select | auto_sel  | 0       |
+|     icmp_ln42_fu_884_p2                                  |     |        | icmp_ln42     | setgt  | auto      | 0       |
+|     icmp_ln43_fu_890_p2                                  |     |        | icmp_ln43     | setlt  | auto      | 0       |
+|     select_ln42_fu_900_p3                                |     |        | select_ln42   | select | auto_sel  | 0       |
+|     or_ln42_fu_908_p2                                    |     |        | or_ln42       | or     | auto      | 0       |
+|     y_fu_914_p3                                          |     |        | y             | select | auto_sel  | 0       |
+|   + p_anonymous_namespace_execute_Pipeline_WRITE_RESULTS | 0   |        |               |        |           |         |
+|     icmp_ln155_fu_109_p2                                 |     |        | icmp_ln155    | seteq  | auto      | 0       |
+|     add_ln155_fu_115_p2                                  |     |        | add_ln155     | add    | fabric    | 0       |
+|     tlast_fu_126_p2                                      |     |        | tlast         | seteq  | auto      | 0       |
++----------------------------------------------------------+-----+--------+---------------+--------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------------------------+--------------+-----------+------+------+--------+--------+----------+------+---------+------------------+
+| Name                             | Usage        | Type      | BRAM | URAM | CE_REG | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                                  |              |           |      |      |        |        |          |      |         | Banks            |
++----------------------------------+--------------+-----------+------+------+--------+--------+----------+------+---------+------------------+
+| + accelerator                    |              |           | 1    | 0    |        |        |          |      |         |                  |
+|   control_s_axi_U                | interface    | s_axilite |      |      |        |        |          |      |         |                  |
+|  + p_anonymous_namespace_execute |              |           | 1    | 0    |        |        |          |      |         |                  |
+|    result_U                      | ram_1p array |           | 1    |      | N      |        | result   | auto | 1       | 16, 1024, 1      |
++----------------------------------+--------------+-----------+------+------+--------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Ignored Pragmas
++-----------------+---------------------------+----------------------------------+-----------------+
+| Type            | Options                   | Location                         | Messages        |
++-----------------+---------------------------+----------------------------------+-----------------+
+| ARRAY_PARTITION | variable=history complete | in execute (accelerator.cpp:66)  | Not implemented |
+| UNROLL          |                           | in execute (accelerator.cpp:133) | Not implemented |
+| UNROLL          |                           | in execute (accelerator.cpp:140) | Not implemented |
++-----------------+---------------------------+----------------------------------+-----------------+
+
+* Inferred Pragmas
++----------+---------+---------------------------------------------------------------------------------------------------+-------------------------------+
+| Type     | Options | Location                                                                                          | Inferred From                 |
++----------+---------+---------------------------------------------------------------------------------------------------+-------------------------------+
+| PIPELINE |         | loop READ_CONFIG (accelerator.cpp:100:13) in (anonymous namespace)::execute (accelerator.cpp:100) | syn.compile.pipeline_loops=64 |
+| PIPELINE |         | loop READ_HEADER (accelerator.cpp:80:9) in (anonymous namespace)::execute (accelerator.cpp:80)    | syn.compile.pipeline_loops=64 |
++----------+---------+---------------------------------------------------------------------------------------------------+-------------------------------+
+
+* Implemented Pragmas
++-----------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+| Type            | Options                           | Location                                                                                                                 |
++-----------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+| INLINE          |                                   | in _zn12_global__n_15checkerkn3hls4axisi6ap_intili32eelm0elm0elm0elh56elb0eeejjjjb (accelerator.cpp:13)                  |
+| INLINE          |                                   | in _zn12_global__n_17respondern3hls6streamins0_4axisi6ap_intili32eelm0elm0elm0elh56elb0eeeli0eeejjj (accelerator.cpp:26) |
+| INLINE          |                                   | in _zn12_global__n_111rounded_q15e6ap_intili64ee (accelerator.cpp:34)                                                    |
+| ARRAY_PARTITION | dim=1 type=complete variable=taps | in (anonymous namespace)::execute (accelerator.cpp:65)                                                                   |
+| UNROLL          |                                   | in (anonymous namespace)::execute (accelerator.cpp:68)                                                                   |
+| ARRAY_PARTITION | dim=1 type=complete variable=h    | in (anonymous namespace)::execute (accelerator.cpp:77)                                                                   |
+| UNROLL          |                                   | in (anonymous namespace)::execute (accelerator.cpp:115)                                                                  |
+| LOOP_TRIPCOUNT  | max=1024 min=1 avg=512            | in (anonymous namespace)execute_pipeline_process_data (accelerator.cpp:126)                                              |
++-----------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+----------------------------------------+-------------------------------------------------------+
+| Type            | Options                                | Location                                              |
++-----------------+----------------------------------------+-------------------------------------------------------+
+| INLINE          |                                        | in check (accelerator.cpp:13)                         |
+| INLINE          |                                        | in respond (accelerator.cpp:26)                       |
+| INLINE          |                                        | in rounded_q15 (accelerator.cpp:34)                   |
+| ARRAY_PARTITION | variable=taps complete                 | in execute (accelerator.cpp:65)                       |
+| UNROLL          |                                        | in execute (accelerator.cpp:68)                       |
+| ARRAY_PARTITION | variable=h complete                    | in execute (accelerator.cpp:77)                       |
+| UNROLL          |                                        | in execute (accelerator.cpp:115)                      |
+| PIPELINE        | ii=1                                   | in execute (accelerator.cpp:125)                      |
+| LOOP_TRIPCOUNT  | min=1 max=1024                         | in execute (accelerator.cpp:126)                      |
+| PIPELINE        | ii=1                                   | in execute (accelerator.cpp:156)                      |
+| INTERFACE       | axis port=in_stream depth=4096         | in accelerator (accelerator.cpp:168)                  |
+| INTERFACE       | axis port=out_stream depth=4096        | in accelerator (accelerator.cpp:169)                  |
+| INTERFACE       | s_axilite port=halted bundle=control   | in accelerator (accelerator.cpp:170)                  |
+| INTERFACE       | s_axilite port=error bundle=control    | in accelerator (accelerator.cpp:171)                  |
+| INTERFACE       | s_axilite port=tx_id bundle=control    | in accelerator (accelerator.cpp:172)                  |
+| INTERFACE       | s_axilite port=consumed bundle=control | in accelerator (accelerator.cpp:173)                  |
+| INTERFACE       | s_axilite port=return bundle=control   | in accelerator (accelerator.cpp:174)                  |
+| PIPELINE        | ii=1                                   | in flush_axi4_stream_to_tlast (streamutils_hls.h:164) |
++-----------------+----------------------------------------+-------------------------------------------------------+
+
+

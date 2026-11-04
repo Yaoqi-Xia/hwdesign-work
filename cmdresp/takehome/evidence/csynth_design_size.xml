@@ -1,0 +1,60 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">, 4837, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll, 1110, user unroll pragmas are applied</column>
+            <column name="">(2) simplification,   832, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline,   952, user inline pragmas are applied</column>
+            <column name="">(4) simplification,   685, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition,   649, user array partition pragmas are applied</column>
+            <column name="">(2) simplification,   622, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate,   622, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape,   622, apply array reshape pragmas</column>
+            <column name="">(5) access patterns, 1082, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification, 1052, loop and instruction simplification</column>
+            <column name="">(2) parallelization,   857, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition,   660, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification,   654, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering,   558, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations,   448, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="accelerator" col1="accelerator.cpp:164" col2="4837" col3="685" col4="1082" col5="654" col6="448">
+                    <row id="5" col0="execute" col1="accelerator.cpp:57" col2="4802" col3="660" col4="1049" col5="621" col6="404">
+                        <row id="1" col0="check" col1="accelerator.cpp:11" col2="639" col2_disp="  639 (3 calls)" col3="" col4="" col5="" col6=""/>
+                        <row id="2" col0="respond" col1="accelerator.cpp:25" col2="1990" col2_disp="1,990 (2 calls)" col3="" col4="" col5="" col6="">
+                            <row id="3" col0="write_axi4_stream&lt;32&gt;" col1="resp_hdr.h:119" col2="1832" col2_disp="1,832 (2 calls)" col3="" col4="" col5="" col6="">
+                                <row id="7" col0="write_axi4_stream_impl" col1="resp_hdr.h:105" col2="1826" col2_disp="1,826 (2 calls)" col3="" col4="" col5="" col6="">
+                                    <row id="6" col0="write_axi4_word&lt;32&gt;" col1="streamutils_hls.h:147" col2="1602" col2_disp="1,602 (6 calls)" col3="" col4="" col5="" col6=""/>
+                                </row>
+                            </row>
+                        </row>
+                        <row id="6" col0="write_axi4_word&lt;32&gt;" col1="streamutils_hls.h:147" col2="267" col3="" col4="" col5="" col6=""/>
+                        <row id="4" col0="rounded_q15" col1="accelerator.cpp:33" col2="777" col3="" col4="" col5="" col6=""/>
+                        <row id="7" col0="write_axi4_stream_impl" col1="resp_hdr.h:105" col2="" col3="166" col3_disp="166 (2 calls)" col4="422" col4_disp="  422 (2 calls)" col5="188" col5_disp="188 (2 calls)" col6="56" col6_disp=" 56 (2 calls)"/>
+                    </row>
+                </row>
+            </rows>
+            <notes/>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>

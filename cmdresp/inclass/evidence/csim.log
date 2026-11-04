@@ -1,0 +1,111 @@
+
+****** vitis-run v2026.1 (64-bit)
+  **** SW Build 6497934 on 2026-06-16-10:22:25
+  **** Start of session at: Wed Nov  4 14:49:06 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+  **** HLS Build v2026.1 6493734
+Sourcing Tcl script '/home/yx3954/hwdesign/hwdesign-work/cmdresp/inclass/run.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset hls_project 
+WARNING: [HLS 200-2182] The 'hls_project' project will not automatically appear within Vitis IDE workspaces and is meant only for TCL batch use.  Please use open_component instead of open_project/open_solution to generate Vitis IDE compatible component files and directory structure.
+Resolution: For help on HLS 200-2182 see docs.amd.com/access/sources/dita/topic?Doc_Version=2026.1%20English&url=ug1448-hls-guidance&resourceid=200-2182.html
+INFO: [HLS 200-10] Creating and opening solution '/home/yx3954/hwdesign/hwdesign-work/cmdresp/inclass/hls_project'.
+INFO: [HLS 200-1510] Running: set_top accelerator 
+INFO: [HLS 200-1510] Running: add_files accelerator.cpp -cflags -I/home/yx3954/hwdesign/hwdesign-work/cmdresp/inclass -ffp-contract=off 
+INFO: [HLS 200-10] Adding design file 'accelerator.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb tb_accelerator.cpp -cflags -I/home/yx3954/hwdesign/hwdesign-work/cmdresp/inclass -ffp-contract=off 
+INFO: [HLS 200-10] Adding test bench file 'tb_accelerator.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset solution1 -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution '/home/yx3954/hwdesign/hwdesign-work/cmdresp/inclass/hls_project/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.amd.com/access/sources/dita/topic?Doc_Version=2026.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+WARNING: [HLS 200-2149] The 'flow_target' option is deprecated and will be removed in a future release. For 'vivado' value you may simply remove the option for equivalent behavior.
+WARNING: [HLS 200-484] The 'open_solution -flow_target' command is deprecated and will be removed in a future release.
+INFO: [HLS 200-1510] Running: set_part xc7z020clg484-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1510] Running: create_clock -period 10 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csim_design -argv /home/yx3954/hwdesign/hwdesign-work/cmdresp/inclass csim 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [HLS 200-2191] C-Simulation will use clang-16 as the compiler
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../tb_accelerator.cpp in debug mode
+   Compiling ../../../../accelerator.cpp in debug mode
+   Generating csim.exe
+SCENARIO 0 basic_hand PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 1 end_only PASS status=0/0/0 consumed=3 output_beats=0
+SCENARIO 2 multiple_data_repeated_tx PASS status=0/0/0 consumed=17 output_beats=12
+SCENARIO 3 reconfigure_reset PASS status=0/0/0 consumed=25 output_beats=18
+SCENARIO 4 random_0 PASS status=0/0/0 consumed=28 output_beats=23
+SCENARIO 5 random_1 PASS status=0/0/0 consumed=39 output_beats=34
+SCENARIO 6 random_2 PASS status=0/0/0 consumed=50 output_beats=45
+SCENARIO 7 random_3 PASS status=0/0/0 consumed=61 output_beats=56
+SCENARIO 8 random_4 PASS status=0/0/0 consumed=72 output_beats=67
+SCENARIO 9 random_5 PASS status=0/0/0 consumed=83 output_beats=78
+SCENARIO 10 separate_rounding PASS status=0/0/0 consumed=12 output_beats=7
+SCENARIO 11 minimum_sizes PASS status=0/0/0 consumed=12 output_beats=7
+SCENARIO 12 maximum_sizes PASS status=0/0/0 consumed=1035 output_beats=1030
+SCENARIO 13 unconfigured PASS status=1/5/77 consumed=3 output_beats=0
+SCENARIO 14 recover_unconfigured PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 15 header_early_before_tx PASS status=1/1/0 consumed=12 output_beats=9
+SCENARIO 16 recover_header_early_before_tx PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 17 header_early_after_tx PASS status=1/1/77 consumed=13 output_beats=9
+SCENARIO 18 recover_header_early_after_tx PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 19 header_missing PASS status=1/2/77 consumed=14 output_beats=9
+SCENARIO 20 recover_header_missing PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 21 unknown_command PASS status=1/3/77 consumed=14 output_beats=9
+SCENARIO 22 recover_unknown_command PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 23 config_zero PASS status=1/4/77 consumed=14 output_beats=9
+SCENARIO 24 recover_config_zero PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 25 config_too_large PASS status=1/4/77 consumed=14 output_beats=9
+SCENARIO 26 recover_config_too_large PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 27 data_zero PASS status=1/4/77 consumed=14 output_beats=9
+SCENARIO 28 recover_data_zero PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 29 data_too_large PASS status=1/4/77 consumed=14 output_beats=9
+SCENARIO 30 recover_data_too_large PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 31 end_nonzero PASS status=1/4/77 consumed=14 output_beats=9
+SCENARIO 32 recover_end_nonzero PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 33 config_too_small PASS status=1/4/77 consumed=14 output_beats=9
+SCENARIO 34 recover_config_too_small PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 35 config_early PASS status=1/6/77 consumed=15 output_beats=9
+SCENARIO 36 recover_config_early PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 37 config_missing PASS status=1/7/77 consumed=16 output_beats=9
+SCENARIO 38 recover_config_missing PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 39 data_early PASS status=1/8/77 consumed=15 output_beats=9
+SCENARIO 40 recover_data_early PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 41 data_missing PASS status=1/9/77 consumed=15 output_beats=9
+SCENARIO 42 recover_data_missing PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 43 mask_header_keep PASS status=1/10/0 consumed=12 output_beats=9
+SCENARIO 44 recover_mask_header_keep PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 45 mask_header_strb PASS status=1/10/0 consumed=12 output_beats=9
+SCENARIO 46 recover_mask_header_strb PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 47 mask_config_keep PASS status=1/10/77 consumed=15 output_beats=9
+SCENARIO 48 recover_mask_config_keep PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 49 mask_config_strb PASS status=1/10/77 consumed=15 output_beats=9
+SCENARIO 50 recover_mask_config_strb PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 51 mask_data_keep PASS status=1/10/77 consumed=15 output_beats=9
+SCENARIO 52 recover_mask_data_keep PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 53 mask_data_strb PASS status=1/10/77 consumed=15 output_beats=9
+SCENARIO 54 recover_mask_data_strb PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 55 mask_precedes_framing PASS status=1/10/0 consumed=12 output_beats=9
+SCENARIO 56 recover_mask_precedes_framing PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 57 framing_precedes_opcode PASS status=1/2/77 consumed=14 output_beats=9
+SCENARIO 58 recover_framing_precedes_opcode PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 59 opcode_precedes_count PASS status=1/3/77 consumed=14 output_beats=9
+SCENARIO 60 recover_opcode_precedes_count PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 61 count_precedes_state PASS status=1/4/77 consumed=3 output_beats=0
+SCENARIO 62 recover_count_precedes_state PASS status=0/0/0 consumed=14 output_beats=9
+SCENARIO 63 queued_suffix_not_consumed PASS status=1/9/77 consumed=15 output_beats=9
+WARNING [HLS SIM]: hls::stream 'input' contains leftover data, which may result in RTL simulation hanging.
+SCENARIO 64 recover_queued_suffix_not_consumed PASS status=0/0/0 consumed=14 output_beats=9
+CHECKED 65 ACTIVATIONS; FAILURES 0
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 1035
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:04; Allocated memory: 0.000 MB.
+CMDRESP_SUCCESS: csim
+INFO: [HLS 200-112] Total CPU user time: 5.99 seconds. Total CPU system time: 0.93 seconds. Total elapsed time: 7.15 seconds; peak allocated memory: 286.652 MB.
+INFO: [vitis-run 60-791] Total elapsed time: 0h 0m 9s
+INFO: [vitis-run 60-1662] Stopping dispatch session having empty uuid.

@@ -1,0 +1,29 @@
+{
+  "generated_at_shanghai": "2026-11-05T03:51:08.491313+08:00",
+  "python": "3.12.13 (main, Jul 10 2026, 00:00:00) [GCC 11.5.0 20240719 (Red Hat 11.5.0-14)]",
+  "platform": "Linux-5.14.0-687.17.1.el9_8.x86_64-x86_64-with-glibc2.34",
+  "root": "/home/yx3954/hwdesign/hwdesign-work/cmdresp/inclass",
+  "waveflow_revision": "7430464d5f7de484bdae649e88fe8d2c2b50dd21",
+  "course_source_revision": "ca70678baa58f709cf849bdbd822b95219ef091f",
+  "reference_files": [
+    "examples/stream_inband/poly.py",
+    "examples/stream_inband/poly_build.py",
+    "examples/stream_inband/poly_evaluate_impl.tpp",
+    "examples/stream_inband/run.tcl",
+    "docs/examples/stream_inband/03_csim_verification.md",
+    "docs/examples/stream_inband/05_cosim_timing.md"
+  ],
+  "toolchain": "Vitis HLS / Vivado XSim 2026.1 (course requests 2025.1)",
+  "sha256": {
+    "accelerator.cpp": "5c2aefe6adcbe192f5b3c994ae132eaf0b99be7138a754b5acbb348f14b82322",
+    "accelerator.h": "aac45475723ba6ade479de0bd0094e2513356e9e1b5e576a9f6921c86fb39ba2",
+    "tb_accelerator.cpp": "2d1dd37a1aca3f5dbc2bc53d5a67e34a9a62db27630dd1df295aa84c3063932e",
+    "design.h": "b5e4bd7a204ead4194644dac54da698b1110cba1612c77183ec4bc2f4855dcfa",
+    "model.py": "3ac34cbd7462251dd24585e812f7148598a598eb62dc9e80eab2678d675d7a12",
+    "scenarios.py": "ff594ee0f7233b7dfa1dcace2725ec1eaad0bc3cb8363aaa4795a9b1638b0d49",
+    "run.tcl": "c54afd6a662459b2d34a47221d4c751ea9f4a0e4fb9de869e99d25ccb59f34f5",
+    "streamutils_hls.h": "b8ea23c6c34e2c514e39819e668248c349a4475191e9c9a8f8331bb30f6be029",
+    "include/resp_hdr.h": "0f58c2af1f2ce8c51792698782109ed8313b74bb63957ae5bbc3ff01af2224a9",
+    "vectors/activations.txt": "cb56a1aa3af3c8b842fb9d8dba91ce0bf107bc9f5d02488ec9ccc065bcd2d62b"
+  }
+}

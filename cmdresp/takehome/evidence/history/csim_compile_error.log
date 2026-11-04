@@ -1,0 +1,52 @@
+
+****** vitis-run v2026.1 (64-bit)
+  **** SW Build 6497934 on 2026-06-16-10:22:25
+  **** Start of session at: Wed Nov  4 14:28:31 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+  **** HLS Build v2026.1 6493734
+Sourcing Tcl script '/home/yx3954/hwdesign/cmdresp/takehome/run.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset hls_project 
+WARNING: [HLS 200-2182] The 'hls_project' project will not automatically appear within Vitis IDE workspaces and is meant only for TCL batch use.  Please use open_component instead of open_project/open_solution to generate Vitis IDE compatible component files and directory structure.
+Resolution: For help on HLS 200-2182 see docs.amd.com/access/sources/dita/topic?Doc_Version=2026.1%20English&url=ug1448-hls-guidance&resourceid=200-2182.html
+INFO: [HLS 200-10] Opening and resetting solution '/home/yx3954/hwdesign/cmdresp/takehome/hls_project'.
+INFO: [HLS 200-1510] Running: set_top accelerator 
+INFO: [HLS 200-1510] Running: add_files accelerator.cpp -cflags -I/home/yx3954/hwdesign/cmdresp/takehome -ffp-contract=off 
+INFO: [HLS 200-10] Adding design file 'accelerator.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb tb_accelerator.cpp -cflags -I/home/yx3954/hwdesign/cmdresp/takehome -ffp-contract=off 
+INFO: [HLS 200-10] Adding test bench file 'tb_accelerator.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset solution1 -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution '/home/yx3954/hwdesign/cmdresp/takehome/hls_project/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.amd.com/access/sources/dita/topic?Doc_Version=2026.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+WARNING: [HLS 200-2149] The 'flow_target' option is deprecated and will be removed in a future release. For 'vivado' value you may simply remove the option for equivalent behavior.
+WARNING: [HLS 200-484] The 'open_solution -flow_target' command is deprecated and will be removed in a future release.
+INFO: [HLS 200-1510] Running: set_part xc7z020clg484-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1510] Running: create_clock -period 10 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csim_design -argv /home/yx3954/hwdesign/cmdresp/takehome csim 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [HLS 200-2191] C-Simulation will use clang-16 as the compiler
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../tb_accelerator.cpp in debug mode
+   Compiling ../../../../accelerator.cpp in debug mode
+../../../../accelerator.cpp:40:34: error: conditional expression is ambiguous; 'ap_int<65 aka 65>' can be converted to 'ap_int<64>' and vice versa
+    ap_int<64> result = negative ? -(ap_int<64>)q : (ap_int<64>)q;
+                                 ^ ~~~~~~~~~~~~~~   ~~~~~~~~~~~~~
+1 error generated.
+make: *** [csim.mk:96: obj/accelerator.o] Error 1
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:04; Allocated memory: 0.000 MB.
+CSIM Failed
+    while executing
+"source /home/yx3954/hwdesign/cmdresp/takehome/run.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $tclfile] "
+
+INFO: [HLS 200-112] Total CPU user time: 5.84 seconds. Total CPU system time: 0.81 seconds. Total elapsed time: 6.71 seconds; peak allocated memory: 286.602 MB.
+INFO: [vitis-run 60-1662] Stopping dispatch session having empty uuid.

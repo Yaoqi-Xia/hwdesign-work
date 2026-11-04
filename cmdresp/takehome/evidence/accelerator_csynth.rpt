@@ -1,0 +1,175 @@
+
+
+================================================================
+== Vitis HLS Report for 'accelerator'
+================================================================
+* Date:           Wed Nov  4 14:49:56 2026
+
+* Version:        2026.1 (Build 6493734 on Jun 16 2026)
+* Project:        hls_project
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+-----------+------------+
+    |  Clock |  Target  | Estimated | Uncertainty|
+    +--------+----------+-----------+------------+
+    |ap_clk  |  10.00 ns|  10.280 ns|     2.70 ns|
+    +--------+----------+-----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +------------------------------------------+-------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |                                          |                               |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |                 Instance                 |             Module            |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +------------------------------------------+-------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |grp_p_anonymous_namespace_execute_fu_102  |p_anonymous_namespace_execute  |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+        +------------------------------------------+-------------------------------+---------+---------+----------+----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|     41|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        1|    9|    3551|   4578|    0|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       0|    126|    -|
+|Register         |        -|    -|      46|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        1|    9|    3597|   4745|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |       ~0|    4|       3|      8|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +------------------------------------------+-------------------------------+---------+----+------+------+-----+
+    |                 Instance                 |             Module            | BRAM_18K| DSP|  FF  |  LUT | URAM|
+    +------------------------------------------+-------------------------------+---------+----+------+------+-----+
+    |control_s_axi_U                           |control_s_axi                  |        0|   0|   188|   296|    0|
+    |grp_p_anonymous_namespace_execute_fu_102  |p_anonymous_namespace_execute  |        1|   9|  3363|  4282|    0|
+    +------------------------------------------+-------------------------------+---------+----+------+------+-----+
+    |Total                                     |                               |        1|   9|  3551|  4578|    0|
+    +------------------------------------------+-------------------------------+---------+----+------+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |                        Variable Name                       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |grp_p_anonymous_namespace_execute_fu_102_out_stream_TREADY  |       and|   0|  0|   2|           1|           1|
+    |icmp_ln181_fu_137_p2                                        |      icmp|   0|  0|  39|          32|           1|
+    +------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                                       |          |   0|  0|  41|          33|           2|
+    +------------------------------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------------+----+-----------+-----+-----------+
+    |              Name             | LUT| Input Size| Bits| Total Bits|
+    +-------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                      |  25|          5|    1|          5|
+    |consumed                       |  14|          3|   32|         96|
+    |error                          |  14|          3|   32|         96|
+    |halted                         |  14|          3|   32|         96|
+    |in_stream_TREADY_int_regslice  |   9|          2|    1|          2|
+    |out_stream_TDATA_int_regslice  |   9|          2|   32|         64|
+    |out_stream_TKEEP_int_regslice  |   9|          2|    4|          8|
+    |out_stream_TLAST_int_regslice  |   9|          2|    1|          2|
+    |out_stream_TSTRB_int_regslice  |   9|          2|    4|          8|
+    |tx_id                          |  14|          3|   32|         96|
+    +-------------------------------+----+-----------+-----+-----------+
+    |Total                          | 126|         27|  171|        473|
+    +-------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------------------+----+----+-----+-----------+
+    |                          Name                         | FF | LUT| Bits| Const Bits|
+    +-------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                              |   4|   0|    4|          0|
+    |grp_p_anonymous_namespace_execute_fu_102_ap_start_reg  |   1|   0|    1|          0|
+    |out_stream_TDATA_reg                                   |  32|   0|   32|          0|
+    |out_stream_TKEEP_reg                                   |   4|   0|    4|          0|
+    |out_stream_TLAST_reg                                   |   1|   0|    1|          0|
+    |out_stream_TSTRB_reg                                   |   4|   0|    4|          0|
+    +-------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                  |  46|   0|   46|          0|
+    +-------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+---------------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |    Source Object    |    C Type    |
++-----------------------+-----+-----+------------+---------------------+--------------+
+|s_axi_control_AWVALID  |   in|    1|       s_axi|              control|       pointer|
+|s_axi_control_AWREADY  |  out|    1|       s_axi|              control|       pointer|
+|s_axi_control_AWADDR   |   in|    7|       s_axi|              control|       pointer|
+|s_axi_control_WVALID   |   in|    1|       s_axi|              control|       pointer|
+|s_axi_control_WREADY   |  out|    1|       s_axi|              control|       pointer|
+|s_axi_control_WDATA    |   in|   32|       s_axi|              control|       pointer|
+|s_axi_control_WSTRB    |   in|    4|       s_axi|              control|       pointer|
+|s_axi_control_ARVALID  |   in|    1|       s_axi|              control|       pointer|
+|s_axi_control_ARREADY  |  out|    1|       s_axi|              control|       pointer|
+|s_axi_control_ARADDR   |   in|    7|       s_axi|              control|       pointer|
+|s_axi_control_RVALID   |  out|    1|       s_axi|              control|       pointer|
+|s_axi_control_RREADY   |   in|    1|       s_axi|              control|       pointer|
+|s_axi_control_RDATA    |  out|   32|       s_axi|              control|       pointer|
+|s_axi_control_RRESP    |  out|    2|       s_axi|              control|       pointer|
+|s_axi_control_BVALID   |  out|    1|       s_axi|              control|       pointer|
+|s_axi_control_BREADY   |   in|    1|       s_axi|              control|       pointer|
+|s_axi_control_BRESP    |  out|    2|       s_axi|              control|       pointer|
+|ap_clk                 |   in|    1|  ap_ctrl_hs|          accelerator|  return value|
+|ap_rst_n               |   in|    1|  ap_ctrl_hs|          accelerator|  return value|
+|interrupt              |  out|    1|  ap_ctrl_hs|          accelerator|  return value|
+|in_stream_TDATA        |   in|   32|        axis|   in_stream_V_data_V|       pointer|
+|in_stream_TVALID       |   in|    1|        axis|   in_stream_V_last_V|       pointer|
+|in_stream_TREADY       |  out|    1|        axis|   in_stream_V_last_V|       pointer|
+|in_stream_TLAST        |   in|    1|        axis|   in_stream_V_last_V|       pointer|
+|in_stream_TKEEP        |   in|    4|        axis|   in_stream_V_keep_V|       pointer|
+|in_stream_TSTRB        |   in|    4|        axis|   in_stream_V_strb_V|       pointer|
+|out_stream_TDATA       |  out|   32|        axis|  out_stream_V_data_V|       pointer|
+|out_stream_TVALID      |  out|    1|        axis|  out_stream_V_last_V|       pointer|
+|out_stream_TREADY      |   in|    1|        axis|  out_stream_V_last_V|       pointer|
+|out_stream_TLAST       |  out|    1|        axis|  out_stream_V_last_V|       pointer|
+|out_stream_TKEEP       |  out|    4|        axis|  out_stream_V_keep_V|       pointer|
+|out_stream_TSTRB       |  out|    4|        axis|  out_stream_V_strb_V|       pointer|
++-----------------------+-----+-----+------------+---------------------+--------------+
+

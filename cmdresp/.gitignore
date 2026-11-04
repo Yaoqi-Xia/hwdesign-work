@@ -1,4 +1,6 @@
 **/hls_project/
+**/logs/
+**/vcd/
 **/__pycache__/
 **/.Xil/
 **/vitis*.log

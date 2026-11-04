@@ -1,0 +1,46 @@
+{
+  "scenario": "maximum_sizes",
+  "activation": 16,
+  "actual_rtl_clock_ns": 10.0,
+  "estimated_clock_ns": 10.28,
+  "clock_target_ns": "<10",
+  "clock_target_status": "FAIL",
+  "data_pipeline_ii": 1,
+  "samples": 1024,
+  "average_input_interval_cycles": 1.0039100684261975,
+  "minimum_input_gap_cycles": 1,
+  "maximum_input_gap_cycles": 5,
+  "input_continuously_valid": true,
+  "output_continuously_ready": true,
+  "first_sample_ps": 19235000,
+  "last_sample_ps": 29505000,
+  "input_span_cycles": 1027,
+  "nonunit_input_gaps": [
+    {
+      "after_sample": 1,
+      "cycles": 5
+    }
+  ],
+  "throughput_target_status": "FAIL",
+  "measured_pin_latency_cycles": 2111,
+  "vitis_reported_latency_cycles": 2113,
+  "pin_vs_report_offset_cycles": -2,
+  "vitis_reported_activation_interval_cycles": 2129,
+  "end_to_end_samples_per_cycle": 0.4846190250828206,
+  "repeated_activation_samples_per_cycle": 0.48097698449976517,
+  "resources": {
+    "BRAM_18K": 1,
+    "DSP": 9,
+    "FF": 3597,
+    "LUT": 4745,
+    "URAM": 0
+  },
+  "checked_activations": 77,
+  "sources": [
+    "evidence/ports.vcd.gz",
+    "evidence/rtl_handshakes.csv",
+    "evidence/result.transaction.rpt",
+    "evidence/accelerator_csynth.xml",
+    "evidence/p_anonymous_namespace_execute_Pipeline_PROCESS_DATA_csynth.xml"
+  ]
+}

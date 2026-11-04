@@ -1,0 +1,63 @@
+[
+  {
+    "name": "hand_two_tap",
+    "status": "PASS",
+    "actual": [
+      4096,
+      12288,
+      4096
+    ],
+    "expected": [
+      4096,
+      12288,
+      4096
+    ]
+  },
+  {
+    "name": "hand_ties_even",
+    "status": "PASS",
+    "actual": [
+      0,
+      2,
+      2,
+      0,
+      -2,
+      -2
+    ],
+    "expected": [
+      0,
+      2,
+      2,
+      0,
+      -2,
+      -2
+    ]
+  },
+  {
+    "name": "hand_saturation",
+    "status": "PASS",
+    "actual": [
+      32767,
+      32767,
+      1,
+      -32768
+    ],
+    "expected": [
+      32767,
+      32767,
+      1,
+      -32768
+    ]
+  },
+  {
+    "name": "numpy_convolve_fraction_round",
+    "status": "PASS",
+    "checked_samples": 8192,
+    "seed": 501
+  },
+  {
+    "name": "rounding_residue_sweep",
+    "status": "PASS",
+    "checked_accumulators": 360448
+  }
+]

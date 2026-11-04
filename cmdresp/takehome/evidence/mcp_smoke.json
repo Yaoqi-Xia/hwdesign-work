@@ -1,0 +1,197 @@
+{
+  "transport": "stdio",
+  "server": {
+    "meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": {},
+      "logging": null,
+      "prompts": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": false
+      },
+      "completions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "waveflow",
+      "title": null,
+      "version": "1.30.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": null
+  },
+  "tools": {
+    "meta": null,
+    "nextCursor": null,
+    "tools": [
+      {
+        "name": "waveflow_get_schema_draft_plan",
+        "title": null,
+        "description": "Return a deterministic step-by-step workflow for drafting a new waveflow schema from a natural-language request. This helper does not search, rank, or recommend specific example IDs.",
+        "inputSchema": {
+          "properties": {
+            "task": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Task"
+            },
+            "workspace_root": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Workspace Root"
+            }
+          },
+          "title": "get_schema_draft_planArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "waveflow_validate_schema",
+        "title": null,
+        "description": "Validate a waveflow schema source file and write a structured JSON report to the specified output path. Returns a compact result with ok/error_count/warning_count/report_path/summary.",
+        "inputSchema": {
+          "properties": {
+            "schema_name": {
+              "title": "Schema Name",
+              "type": "string"
+            },
+            "input_path": {
+              "title": "Input Path",
+              "type": "string"
+            },
+            "output_path": {
+              "title": "Output Path",
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema_name",
+            "input_path",
+            "output_path"
+          ],
+          "title": "validate_schema_from_fileArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "validate_schema_from_fileDictOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "waveflow_get_components",
+        "title": null,
+        "description": "Return the canonical waveflow schema vocabulary glossary. Includes all core schema classes (DataSchema, DataList, DataArray, DataField, IntField, FloatField, EnumField, MemAddr, IntEnum) and common design patterns with descriptions and keywords. Call this first to select relevant keywords for waveflow_rag_search_examples. Deterministic; no network access.",
+        "inputSchema": {
+          "properties": {},
+          "title": "get_componentsArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "waveflow_rag_search_examples",
+        "title": null,
+        "description": "Search the OpenAI-hosted vector store of waveflow example corpus files. Returns the top-k most relevant example snippets for the given task. Requires WAVEFLOW_EXAMPLES_VECTOR_STORE_ID env var to be set. Use waveflow_get_components first to obtain good keywords.",
+        "inputSchema": {
+          "properties": {
+            "task": {
+              "title": "Task",
+              "type": "string"
+            },
+            "keywords": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Keywords"
+            },
+            "k": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": 5,
+              "title": "K"
+            }
+          },
+          "required": [
+            "task"
+          ],
+          "title": "search_schema_examplesArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "search_schema_examplesDictOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      }
+    ]
+  },
+  "components": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"summary\": \"Canonical waveflow schema vocabulary: core classes (DataSchema, DataList, DataArray, DataField, IntField, FloatField, EnumField, MemAddr, IntEnum) and common design patterns. Use the keywords to form search queries for waveflow_search_examples.\",\n  \"components\": [\n    {\n      \"name\": \"DataSchema\",\n      \"kind\": \"base_class\",\n      \"description\": \"Root base class for all waveflow schemas.  Every DataList, DataArray, and DataField subclass ultimately inherits from DataSchema.  Provides get_bitwidth(), init_value(), and code-generation helpers.\",\n      \"keywords\": [\n        \"base\",\n        \"schema\",\n        \"bitwidth\",\n        \"init_value\"\n      ]\n    },\n    {\n      \"name\": \"DataList\",\n      \"kind\": \"schema_class\",\n      \"description\": \"A fixed-layout record (struct) whose fields are declared in an ``elements`` dict.  Each entry maps a field name to a sub-schema and a human-readable description.  Use DataList for command, response, debug, and header structs.\",\n      \"keywords\": [\n        \"struct\",\n        \"record\",\n        \"command\",\n        \"response\",\n        \"header\",\n        \"elements\",\n        \"DataList\"\n      ]\n    },\n    {\n      \"name\": \"DataArray\",\n      \"kind\": \"schema_class\",\n      \"description\": \"An array of homogeneous elements.  Subclasses set ``element_type`` (a DataField or DataArray), ``max_shape`` (tuple of ints), and optionally ``static = True`` for fixed-size arrays.  Use DataArray for arrays of coefficients, pixel rows, etc.\",\n      \"keywords\": [\n        \"array\",\n        \"vector\",\n        \"coefficients\",\n        \"static\",\n        \"element_type\",\n        \"max_shape\",\n        \"DataArray\"\n      ]\n    },\n    {\n      \"name\": \"DataField\",\n      \"kind\": \"field_class\",\n      \"description\": \"Leaf scalar field base class.  Subclasses (IntField, FloatField, EnumField, MemAddr) add type-specific attributes.  Use ``SomeField.specialize(...)`` to create named specializations with fixed parameters.\",\n      \"keywords\": [\n        \"field\",\n        \"scalar\",\n        \"leaf\",\n        \"specialize\",\n        \"DataField\"\n      ]\n    },\n    {\n      \"name\": \"IntField\",\n      \"kind\": \"field_class\",\n      \"description\": \"Integer scalar field.  Specialize with ``bitwidth`` (int) and ``signed`` (bool).  Example: ``TxIdField = IntField.specialize(bitwidth=16, signed=False)``.\",\n      \"keywords\": [\n        \"integer\",\n        \"int\",\n        \"bitwidth\",\n        \"signed\",\n        \"unsigned\",\n        \"IntField\",\n        \"specialize\"\n      ]\n    },\n    {\n      \"name\": \"FloatField\",\n      \"kind\": \"field_class\",\n      \"description\": \"Floating-point scalar field.  Specialize with ``bitwidth`` (32 or 64) and optionally ``include_dir``.  Maps to IEEE 754 float/double in generated C headers.\",\n      \"keywords\": [\n        \"float\",\n        \"double\",\n        \"floating-point\",\n        \"IEEE754\",\n        \"FloatField\",\n        \"bitwidth\"\n      ]\n    },\n    {\n      \"name\": \"EnumField\",\n      \"kind\": \"field_class\",\n      \"description\": \"Enum-backed integer field.  Specialize with ``enum_type`` (an ``IntEnum`` subclass), optional ``bitwidth``, and ``include_filename``.  Generates a C enum in the header.  Use for status codes, error codes, and event types.\",\n      \"keywords\": [\n        \"enum\",\n        \"status\",\n        \"error\",\n        \"event\",\n        \"IntEnum\",\n        \"EnumField\",\n        \"specialize\",\n        \"include_filename\"\n      ]\n    },\n    {\n      \"name\": \"MemAddr\",\n      \"kind\": \"field_class\",\n      \"description\": \"Memory-address field.  Specialize with ``bitwidth`` (typically 32 or 64) and ``include_dir``.  Signals that a field carries a hardware memory address rather than an arbitrary integer.\",\n      \"keywords\": [\n        \"address\",\n        \"memory\",\n        \"pointer\",\n        \"addr\",\n        \"MemAddr\",\n        \"64-bit\",\n        \"32-bit\"\n      ]\n    },\n    {\n      \"name\": \"IntEnum\",\n      \"kind\": \"python_class\",\n      \"description\": \"Standard Python ``enum.IntEnum``.  Define error codes, status codes, and event types as IntEnum subclasses, then pass the class to ``EnumField.specialize(enum_type=...)``.\",\n      \"keywords\": [\n        \"enum\",\n        \"IntEnum\",\n        \"error_code\",\n        \"status_code\",\n        \"event_type\",\n        \"Python\"\n      ]\n    },\n    {\n      \"name\": \"transaction_id_pattern\",\n      \"kind\": \"pattern\",\n      \"description\": \"Reusable ``TxIdField = IntField.specialize(bitwidth=16, signed=False)`` placed as the first field of a command DataList and echoed as the first field of the matching response DataList.  Enables request-response correlation when the accelerator processes multiple commands concurrently.\",\n      \"keywords\": [\n        \"transaction\",\n        \"tx_id\",\n        \"correlation\",\n        \"command\",\n        \"response\",\n        \"echo\"\n      ]\n    },\n    {\n      \"name\": \"include_filename_pattern\",\n      \"kind\": \"pattern\",\n      \"description\": \"Setting ``include_filename = 'my_schema.h'`` on a DataList or on a specialized EnumField controls the name of the generated C header file.  Useful when the accelerator expects a specific header name.\",\n      \"keywords\": [\n        \"include_filename\",\n        \"header\",\n        \"C\",\n        \"codegen\",\n        \"custom_filename\"\n      ]\n    },\n    {\n      \"name\": \"static_array_pattern\",\n      \"kind\": \"pattern\",\n      \"description\": \"A DataArray subclass with ``static = True`` and a concrete ``max_shape`` tuple generates a C array with a fixed compile-time size instead of a length-prefixed dynamic array.  Typical use: coefficient arrays, kernel weights.\",\n      \"keywords\": [\n        \"static\",\n        \"array\",\n        \"fixed-size\",\n        \"compile-time\",\n        \"DataArray\",\n        \"max_shape\"\n      ]\n    },\n    {\n      \"name\": \"nested_dataarray_pattern\",\n      \"kind\": \"pattern\",\n      \"description\": \"Embedding a DataArray as a field inside a DataList (e.g., ``coeffs: CoeffArray``) packs the array inline rather than by reference.  Combine with ``static = True`` for zero-overhead fixed-size arrays in the generated struct.\",\n      \"keywords\": [\n        \"nested\",\n        \"DataArray\",\n        \"DataList\",\n        \"inline\",\n        \"embedded\",\n        \"struct\"\n      ]\n    },\n    {\n      \"name\": \"command_response_debug_pattern\",\n      \"kind\": \"pattern\",\n      \"description\": \"Three-schema set for an accelerator interface: a *command* DataList (what the host sends), a *response* DataList (what the accelerator returns), and optionally a *debug* DataList (internal events emitted during co-simulation for testbench visibility).  Echo the ``tx_id`` from command to response.\",\n      \"keywords\": [\n        \"command\",\n        \"response\",\n        \"debug\",\n        \"accelerator\",\n        \"co-simulation\",\n        \"testbench\",\n        \"interface\",\n        \"pattern\"\n      ]\n    }\n  ]\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "limitation": "Installed revision has no frame-listing or local example/document retrieval tool. Reference files were read directly from the local clone; no MCP example retrieval is claimed."
+}

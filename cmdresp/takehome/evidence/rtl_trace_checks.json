@@ -1,0 +1,2235 @@
+[
+  {
+    "activation": 0,
+    "scenario": "basic_hand",
+    "status": "PASS",
+    "start_ps": 165000,
+    "done_ps": 795000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 165000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 165000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 165000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 165000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 1,
+    "scenario": "end_only",
+    "status": "PASS",
+    "start_ps": 975000,
+    "done_ps": 1095000,
+    "latency_cycles": 12,
+    "input_beats": 3,
+    "output_beats": 0,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 975000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 975000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 975000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 975000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 2,
+    "scenario": "multiple_data_repeated_tx",
+    "status": "PASS",
+    "start_ps": 1275000,
+    "done_ps": 2145000,
+    "latency_cycles": 87,
+    "input_beats": 17,
+    "output_beats": 12,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 1275000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 1275000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 1275000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 1275000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 3,
+    "scenario": "reconfigure_reset",
+    "status": "PASS",
+    "start_ps": 2325000,
+    "done_ps": 3455000,
+    "latency_cycles": 113,
+    "input_beats": 24,
+    "output_beats": 18,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 2325000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 2325000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 2325000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 2325000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 4,
+    "scenario": "random_0",
+    "status": "PASS",
+    "start_ps": 3635000,
+    "done_ps": 4535000,
+    "latency_cycles": 90,
+    "input_beats": 27,
+    "output_beats": 23,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 3635000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 3635000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 3635000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 3635000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 5,
+    "scenario": "random_1",
+    "status": "PASS",
+    "start_ps": 4715000,
+    "done_ps": 5845000,
+    "latency_cycles": 113,
+    "input_beats": 39,
+    "output_beats": 34,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 4715000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 4715000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 4715000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 4715000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 6,
+    "scenario": "random_2",
+    "status": "PASS",
+    "start_ps": 6025000,
+    "done_ps": 7385000,
+    "latency_cycles": 136,
+    "input_beats": 51,
+    "output_beats": 45,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 6025000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 6025000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 6025000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 6025000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 7,
+    "scenario": "random_3",
+    "status": "PASS",
+    "start_ps": 7565000,
+    "done_ps": 9155000,
+    "latency_cycles": 159,
+    "input_beats": 63,
+    "output_beats": 56,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 7565000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 7565000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 7565000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 7565000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 8,
+    "scenario": "random_4",
+    "status": "PASS",
+    "start_ps": 9335000,
+    "done_ps": 11155000,
+    "latency_cycles": 182,
+    "input_beats": 75,
+    "output_beats": 67,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 9335000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 9335000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 9335000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 9335000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 9,
+    "scenario": "random_5",
+    "status": "PASS",
+    "start_ps": 11335000,
+    "done_ps": 13385000,
+    "latency_cycles": 205,
+    "input_beats": 87,
+    "output_beats": 78,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 11335000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 11335000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 11335000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 11335000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 10,
+    "scenario": "ties_even",
+    "status": "PASS",
+    "start_ps": 13565000,
+    "done_ps": 14245000,
+    "latency_cycles": 68,
+    "input_beats": 16,
+    "output_beats": 12,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 13565000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 13565000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 13565000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 13565000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 11,
+    "scenario": "saturation_both",
+    "status": "PASS",
+    "start_ps": 14425000,
+    "done_ps": 15075000,
+    "latency_cycles": 65,
+    "input_beats": 15,
+    "output_beats": 10,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 14425000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 14425000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 14425000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 14425000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 12,
+    "scenario": "nontie_rounding",
+    "status": "PASS",
+    "start_ps": 15255000,
+    "done_ps": 15935000,
+    "latency_cycles": 68,
+    "input_beats": 16,
+    "output_beats": 12,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 15255000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 15255000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 15255000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 15255000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 13,
+    "scenario": "zero_coefficients",
+    "status": "PASS",
+    "start_ps": 16115000,
+    "done_ps": 16825000,
+    "latency_cycles": 71,
+    "input_beats": 21,
+    "output_beats": 10,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 16115000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 16115000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 16115000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 16115000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 14,
+    "scenario": "impulse_eight_taps",
+    "status": "PASS",
+    "start_ps": 17005000,
+    "done_ps": 17955000,
+    "latency_cycles": 95,
+    "input_beats": 33,
+    "output_beats": 22,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 17005000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 17005000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 17005000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 17005000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 15,
+    "scenario": "minimum_sizes",
+    "status": "PASS",
+    "start_ps": 18135000,
+    "done_ps": 18715000,
+    "latency_cycles": 58,
+    "input_beats": 11,
+    "output_beats": 7,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 18135000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 18135000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 18135000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 18135000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 16,
+    "scenario": "maximum_sizes",
+    "status": "PASS",
+    "start_ps": 18895000,
+    "done_ps": 40005000,
+    "latency_cycles": 2111,
+    "input_beats": 1041,
+    "output_beats": 1030,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 18895000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 18895000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 18895000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 18895000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 17,
+    "scenario": "unconfigured",
+    "status": "PASS",
+    "start_ps": 40185000,
+    "done_ps": 40305000,
+    "latency_cycles": 12,
+    "input_beats": 3,
+    "output_beats": 0,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 40185000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 40185000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 40185000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 40185000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 18,
+    "scenario": "recover_unconfigured",
+    "status": "PASS",
+    "start_ps": 40485000,
+    "done_ps": 41115000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 40485000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 40485000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 40485000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 40485000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 19,
+    "scenario": "header_early_before_tx",
+    "status": "PASS",
+    "start_ps": 41295000,
+    "done_ps": 41895000,
+    "latency_cycles": 60,
+    "input_beats": 12,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 41295000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 41295000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 41295000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 41295000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 20,
+    "scenario": "recover_header_early_before_tx",
+    "status": "PASS",
+    "start_ps": 42075000,
+    "done_ps": 42705000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 42075000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 42075000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 42075000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 42075000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 21,
+    "scenario": "header_early_after_tx",
+    "status": "PASS",
+    "start_ps": 42885000,
+    "done_ps": 43495000,
+    "latency_cycles": 61,
+    "input_beats": 13,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 42885000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 42885000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 42885000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 42885000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 22,
+    "scenario": "recover_header_early_after_tx",
+    "status": "PASS",
+    "start_ps": 43675000,
+    "done_ps": 44305000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 43675000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 43675000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 43675000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 43675000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 23,
+    "scenario": "header_missing",
+    "status": "PASS",
+    "start_ps": 44485000,
+    "done_ps": 45105000,
+    "latency_cycles": 62,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 44485000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 44485000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 44485000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 44485000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 24,
+    "scenario": "recover_header_missing",
+    "status": "PASS",
+    "start_ps": 45285000,
+    "done_ps": 45915000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 45285000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 45285000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 45285000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 45285000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 25,
+    "scenario": "unknown_command",
+    "status": "PASS",
+    "start_ps": 46095000,
+    "done_ps": 46725000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 46095000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 46095000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 46095000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 46095000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 26,
+    "scenario": "recover_unknown_command",
+    "status": "PASS",
+    "start_ps": 46905000,
+    "done_ps": 47535000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 46905000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 46905000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 46905000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 46905000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 27,
+    "scenario": "config_zero",
+    "status": "PASS",
+    "start_ps": 47715000,
+    "done_ps": 48345000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 47715000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 47715000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 47715000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 47715000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 28,
+    "scenario": "recover_config_zero",
+    "status": "PASS",
+    "start_ps": 48525000,
+    "done_ps": 49155000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 48525000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 48525000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 48525000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 48525000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 29,
+    "scenario": "config_too_large",
+    "status": "PASS",
+    "start_ps": 49335000,
+    "done_ps": 49965000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 49335000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 49335000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 49335000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 49335000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 30,
+    "scenario": "recover_config_too_large",
+    "status": "PASS",
+    "start_ps": 50145000,
+    "done_ps": 50775000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 50145000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 50145000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 50145000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 50145000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 31,
+    "scenario": "data_zero",
+    "status": "PASS",
+    "start_ps": 50955000,
+    "done_ps": 51585000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 50955000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 50955000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 50955000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 50955000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 32,
+    "scenario": "recover_data_zero",
+    "status": "PASS",
+    "start_ps": 51765000,
+    "done_ps": 52395000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 51765000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 51765000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 51765000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 51765000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 33,
+    "scenario": "data_too_large",
+    "status": "PASS",
+    "start_ps": 52575000,
+    "done_ps": 53205000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 52575000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 52575000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 52575000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 52575000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 34,
+    "scenario": "recover_data_too_large",
+    "status": "PASS",
+    "start_ps": 53385000,
+    "done_ps": 54015000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 53385000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 53385000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 53385000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 53385000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 35,
+    "scenario": "end_nonzero",
+    "status": "PASS",
+    "start_ps": 54195000,
+    "done_ps": 54825000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 54195000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 54195000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 54195000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 54195000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 36,
+    "scenario": "recover_end_nonzero",
+    "status": "PASS",
+    "start_ps": 55005000,
+    "done_ps": 55635000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 55005000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 55005000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 55005000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 55005000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 37,
+    "scenario": "config_early",
+    "status": "PASS",
+    "start_ps": 55815000,
+    "done_ps": 56505000,
+    "latency_cycles": 69,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 55815000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 55815000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 55815000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 55815000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 38,
+    "scenario": "recover_config_early",
+    "status": "PASS",
+    "start_ps": 56685000,
+    "done_ps": 57315000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 56685000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 56685000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 56685000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 56685000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 39,
+    "scenario": "config_missing",
+    "status": "PASS",
+    "start_ps": 57495000,
+    "done_ps": 58195000,
+    "latency_cycles": 70,
+    "input_beats": 16,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 57495000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 57495000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 57495000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 57495000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 40,
+    "scenario": "recover_config_missing",
+    "status": "PASS",
+    "start_ps": 58375000,
+    "done_ps": 59005000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 58375000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 58375000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 58375000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 58375000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 41,
+    "scenario": "data_early",
+    "status": "PASS",
+    "start_ps": 59185000,
+    "done_ps": 59885000,
+    "latency_cycles": 70,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 59185000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 59185000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 59185000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 59185000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 42,
+    "scenario": "recover_data_early",
+    "status": "PASS",
+    "start_ps": 60065000,
+    "done_ps": 60695000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 60065000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 60065000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 60065000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 60065000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 43,
+    "scenario": "data_missing",
+    "status": "PASS",
+    "start_ps": 60875000,
+    "done_ps": 61575000,
+    "latency_cycles": 70,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 60875000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 60875000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 60875000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 60875000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 44,
+    "scenario": "recover_data_missing",
+    "status": "PASS",
+    "start_ps": 61755000,
+    "done_ps": 62385000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 61755000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 61755000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 61755000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 61755000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 45,
+    "scenario": "mask_header_keep",
+    "status": "PASS",
+    "start_ps": 62565000,
+    "done_ps": 63165000,
+    "latency_cycles": 60,
+    "input_beats": 12,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 62565000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 62565000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 62565000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 62565000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 46,
+    "scenario": "recover_mask_header_keep",
+    "status": "PASS",
+    "start_ps": 63345000,
+    "done_ps": 63975000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 63345000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 63345000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 63345000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 63345000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 47,
+    "scenario": "mask_header_strb",
+    "status": "PASS",
+    "start_ps": 64155000,
+    "done_ps": 64755000,
+    "latency_cycles": 60,
+    "input_beats": 12,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 64155000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 64155000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 64155000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 64155000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 48,
+    "scenario": "recover_mask_header_strb",
+    "status": "PASS",
+    "start_ps": 64935000,
+    "done_ps": 65565000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 64935000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 64935000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 64935000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 64935000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 49,
+    "scenario": "mask_config_keep",
+    "status": "PASS",
+    "start_ps": 65745000,
+    "done_ps": 66435000,
+    "latency_cycles": 69,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 65745000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 65745000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 65745000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 65745000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 50,
+    "scenario": "recover_mask_config_keep",
+    "status": "PASS",
+    "start_ps": 66615000,
+    "done_ps": 67245000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 66615000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 66615000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 66615000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 66615000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 51,
+    "scenario": "mask_config_strb",
+    "status": "PASS",
+    "start_ps": 67425000,
+    "done_ps": 68115000,
+    "latency_cycles": 69,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 67425000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 67425000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 67425000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 67425000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 52,
+    "scenario": "recover_mask_config_strb",
+    "status": "PASS",
+    "start_ps": 68295000,
+    "done_ps": 68925000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 68295000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 68295000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 68295000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 68295000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 53,
+    "scenario": "mask_data_keep",
+    "status": "PASS",
+    "start_ps": 69105000,
+    "done_ps": 69805000,
+    "latency_cycles": 70,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 69105000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 69105000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 69105000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 69105000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 54,
+    "scenario": "recover_mask_data_keep",
+    "status": "PASS",
+    "start_ps": 69985000,
+    "done_ps": 70615000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 69985000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 69985000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 69985000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 69985000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 55,
+    "scenario": "mask_data_strb",
+    "status": "PASS",
+    "start_ps": 70795000,
+    "done_ps": 71495000,
+    "latency_cycles": 70,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 70795000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 70795000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 70795000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 70795000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 56,
+    "scenario": "recover_mask_data_strb",
+    "status": "PASS",
+    "start_ps": 71675000,
+    "done_ps": 72305000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 71675000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 71675000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 71675000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 71675000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 57,
+    "scenario": "tap_negative_not_extended",
+    "status": "PASS",
+    "start_ps": 72485000,
+    "done_ps": 73175000,
+    "latency_cycles": 69,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 72485000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 72485000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 72485000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 72485000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 58,
+    "scenario": "recover_tap_negative_not_extended",
+    "status": "PASS",
+    "start_ps": 73355000,
+    "done_ps": 73985000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 73355000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 73355000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 73355000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 73355000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 59,
+    "scenario": "tap_positive_bad_extension",
+    "status": "PASS",
+    "start_ps": 74165000,
+    "done_ps": 74855000,
+    "latency_cycles": 69,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 74165000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 74165000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 74165000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 74165000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 60,
+    "scenario": "recover_tap_positive_bad_extension",
+    "status": "PASS",
+    "start_ps": 75035000,
+    "done_ps": 75665000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 75035000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 75035000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 75035000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 75035000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 61,
+    "scenario": "sample_negative_not_extended",
+    "status": "PASS",
+    "start_ps": 75845000,
+    "done_ps": 76545000,
+    "latency_cycles": 70,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 75845000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 75845000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 75845000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 75845000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 62,
+    "scenario": "recover_sample_negative_not_extended",
+    "status": "PASS",
+    "start_ps": 76725000,
+    "done_ps": 77355000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 76725000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 76725000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 76725000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 76725000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 63,
+    "scenario": "sample_positive_bad_extension",
+    "status": "PASS",
+    "start_ps": 77535000,
+    "done_ps": 78235000,
+    "latency_cycles": 70,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 77535000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 77535000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 77535000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 77535000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 64,
+    "scenario": "recover_sample_positive_bad_extension",
+    "status": "PASS",
+    "start_ps": 78415000,
+    "done_ps": 79045000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 78415000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 78415000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 78415000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 78415000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 65,
+    "scenario": "framing_precedes_value",
+    "status": "PASS",
+    "start_ps": 79225000,
+    "done_ps": 79925000,
+    "latency_cycles": 70,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 79225000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 79225000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 79225000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 79225000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 66,
+    "scenario": "recover_framing_precedes_value",
+    "status": "PASS",
+    "start_ps": 80105000,
+    "done_ps": 80735000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 80105000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 80105000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 80105000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 80105000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 67,
+    "scenario": "mask_precedes_framing",
+    "status": "PASS",
+    "start_ps": 80915000,
+    "done_ps": 81515000,
+    "latency_cycles": 60,
+    "input_beats": 12,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 80915000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 80915000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 80915000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 80915000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 68,
+    "scenario": "recover_mask_precedes_framing",
+    "status": "PASS",
+    "start_ps": 81695000,
+    "done_ps": 82325000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 81695000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 81695000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 81695000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 81695000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 69,
+    "scenario": "framing_precedes_opcode",
+    "status": "PASS",
+    "start_ps": 82505000,
+    "done_ps": 83125000,
+    "latency_cycles": 62,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 82505000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 82505000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 82505000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 82505000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 70,
+    "scenario": "recover_framing_precedes_opcode",
+    "status": "PASS",
+    "start_ps": 83305000,
+    "done_ps": 83935000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 83305000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 83305000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 83305000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 83305000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 71,
+    "scenario": "opcode_precedes_count",
+    "status": "PASS",
+    "start_ps": 84115000,
+    "done_ps": 84745000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 84115000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 84115000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 84115000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 84115000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 72,
+    "scenario": "recover_opcode_precedes_count",
+    "status": "PASS",
+    "start_ps": 84925000,
+    "done_ps": 85555000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 84925000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 84925000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 84925000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 84925000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 73,
+    "scenario": "count_precedes_state",
+    "status": "PASS",
+    "start_ps": 85735000,
+    "done_ps": 85855000,
+    "latency_cycles": 12,
+    "input_beats": 3,
+    "output_beats": 0,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 85735000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 85735000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 85735000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 85735000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 74,
+    "scenario": "recover_count_precedes_state",
+    "status": "PASS",
+    "start_ps": 86035000,
+    "done_ps": 86665000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 86035000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 86035000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 86035000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 86035000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 75,
+    "scenario": "queued_suffix_not_consumed",
+    "status": "PASS",
+    "start_ps": 86845000,
+    "done_ps": 87545000,
+    "latency_cycles": 70,
+    "input_beats": 15,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 86845000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 86845000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 86845000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 86845000,
+        "value": 0
+      }
+    }
+  },
+  {
+    "activation": 76,
+    "scenario": "recover_queued_suffix_not_consumed",
+    "status": "PASS",
+    "start_ps": 87725000,
+    "done_ps": 88355000,
+    "latency_cycles": 63,
+    "input_beats": 14,
+    "output_beats": 9,
+    "startup_clear": "PASS",
+    "clears": {
+      "halted": {
+        "time_ps": 87725000,
+        "value": 0
+      },
+      "error": {
+        "time_ps": 87725000,
+        "value": 0
+      },
+      "tx_id": {
+        "time_ps": 87725000,
+        "value": 0
+      },
+      "consumed": {
+        "time_ps": 87725000,
+        "value": 0
+      }
+    }
+  }
+]
