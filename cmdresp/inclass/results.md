@@ -1,234 +1,125 @@
-# Float32 scale and offset: implementation results
+# Scale and offset: C-simulation results
 
-## Interface
-
-The top is `accelerator(in_stream, out_stream, halted, error, tx_id, consumed)`.
-Both streams are AXI4-Stream, 32-bit TDATA, one value per beat, TKEEP=TSTRB=0xf.
-Every command header is a separate three-beat burst, ordered as follows:
-
-| Beat | Command header | Response header | TLAST |
-| --- | --- | --- | --- |
-| 0 | command code, unsigned 32-bit | echoed command code | 0 |
-| 1 | tx_id, unsigned 32-bit | echoed tx_id | 0 |
-| 2 | count, unsigned 32-bit | output sample count (zero for CONFIG ACK) | 1 |
-
-CONFIG=1, DATA=2, END=3. A payload is a separate burst, with TLAST only on
-its final beat. CONFIG acknowledges with a response header only. DATA
-responds with a header and an output burst. END requires count zero and
-returns without a response; END-only is valid. tx_ids can repeat and need
-not be monotonic. Responses follow command order. There are no error packets.
-The complete malformed command emits nothing; earlier responses remain intact.
-
-CONFIG count must be 2; its payload is a then b. DATA count is 1..1024.
-Numeric words contain IEEE-754 binary32 bits, not numeric integer conversions.
-
-AXI-Lite carries control/status only. `ap_start` launches an activation;
-`ap_done` signals END or a fatal error. `halted` is 1 only on error, `error`
-is the code below, `tx_id` is the offending decoded ID (zero if not read),
-and `consumed` counts kernel stream reads in this activation. A successful
-END sets halted/error/tx_id to zero. Volatile output references retain all
-four startup clears in the synthesized circuit. Read status after ap_done.
-No configuration or history survives a new activation.
-
-Only C simulation was run; an RTL register address map has not been generated.
-
-| Code | Meaning |
-| --- | --- |
-| 0 | OK |
-| 1 | HEADER_EARLY |
-| 2 | HEADER_MISSING |
-| 3 | UNKNOWN_COMMAND |
-| 4 | INVALID_COUNT |
-| 5 | UNCONFIGURED |
-| 6 | CONFIG_EARLY |
-| 7 | CONFIG_MISSING |
-| 8 | DATA_EARLY |
-| 9 | DATA_MISSING |
-| 10 | BYTE_MASK |
-
-Checks stop at the first offending beat: byte masks precede TLAST, which
-precedes numeric representation. Header framing precedes opcode, count,
-then configuration-state validation. A tx_id word is decoded when read,
-even if that word has a mask/framing error. A missing TLAST is detected on
-the declared final beat; no later beat is read to search for TLAST. A
-physically absent beat would block indefinitely, not produce a timeout.
-
-After error the host waits for done, reads status, resets the **whole** stream
-path (including any interface buffers), then starts with fresh streams.
-`consumed` counts application reads; the AXIS register slice may accept
-upstream words before those reads. The host must transmit a full payload
-before expecting its response header and drain output concurrently.
-
-Schemas and generated emitters are in [model.py](model.py) and
-[include/resp_hdr.h](include/resp_hdr.h). Text vectors use decimal unsigned
-`data last keep strb`; their format has no machine-endian dependency.
-
-## Design
-
-The command loop validates headers, reads a,b on CONFIG, and buffers all
-DATA results until framing validates. `multiply` and `add_offset` are
-separate non-inlined float functions and `-ffp-contract=off` prevents a fused
-multiply-add. Each operation rounds to float32 before the next operation.
-Only configuration carries across DATA commands. CONFIG replaces both
-values; every new activation is unconfigured. Error paths publish nothing
-for the malformed command, so no partially emitted response requires repair.
-Numeric inputs are restricted to the normal-or-zero finite domain stated
-in the prompt; subnormal, NaN, infinity and overflow behavior is unspecified.
-
-## Targets
-
-C simulation only, as required. [csim.log](evidence/csim.log) records
-zero errors, and [csim_comparison.json](evidence/csim_comparison.json)
-records all 65 activations PASS. Synthesis, RTL co-simulation, clock, II,
-latency and resource measurements were deliberately not run or claimed.
+Source folder: [cmdresp/inclass](https://github.com/Yaoqi-Xia/hwdesign-work/tree/main/cmdresp/inclass).
+All evidence paths below are relative to that folder.
 
 ## Verification
 
-The independent model checks below ran before hardware comparison.
-The C++ testbench reads the committed input/expected vectors, calls the
-kernel once per activation with fresh streams, and compares every output
-bit, TLAST, TKEEP, TSTRB, all four status values and read counts. It also
-checks that the last output beat is TLAST and, in C simulation, that queued
-input remains unread. [build.py](build.py) independently rechecks the actual
-CSV outputs; a PASS label alone is not the comparison.
+**PASS: all 65 activations agree bit for bit between Python and C:**
+13 normal activations, 26 error activations and 26 fresh recovery activations.
+The build stopped at C simulation; no synthesis or RTL co-simulation was run.
+Sources: [csim.log](evidence/csim.log), [csim_comparison.json](evidence/csim_comparison.json).
 
-| Independent model check | Result | Evidence |
-| --- | --- | --- |
-| hand_scale | PASS | [model_checks.json](evidence/model_checks.json) |
-| hand_reconfigure | PASS | [model_checks.json](evidence/model_checks.json) |
-| separate_rounding | PASS | [model_checks.json](evidence/model_checks.json) |
-Actual beats/status are retained in [csim_beats.csv](evidence/csim_beats.csv)
-and [csim_status.csv](evidence/csim_status.csv). Expected beats/status are in
-[vectors/manifest.json](vectors/manifest.json), and the same vectors in
-the testbench format are in [vectors/activations.txt](vectors/activations.txt).
+The independent model checks all PASS:
 
-Each row names its scenario key in the evidence. Status is halted/error/tx_id; the next value is consumed words. A recovery row immediately follows each error.
+| Check | Hand-computed expected result |
+| --- | --- |
+| hand_scale: a=2, b=-1, X=[-2,0,3] | [-5,-1,5] |
+| hand_reconfigure: a=-0.5, b=2, X=[-2,0,3] | [3,2,0.5] |
+| separate_rounding: a=1+2^-23, x=1-2^-23, b=-1 | +0, bits 0x00000000 |
 
-| Scenario | Python | C | RTL | Status; consumed | Fresh activation | Evidence |
-| --- | --- | --- | --- | --- | --- | --- |
-| basic_hand | PASS | PASS | not run | 0/0/0; 14 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| end_only | PASS | PASS | not run | 0/0/0; 3 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| multiple_data_repeated_tx | PASS | PASS | not run | 0/0/0; 17 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| reconfigure_reset | PASS | PASS | not run | 0/0/0; 25 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| random_0 | PASS | PASS | not run | 0/0/0; 28 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| random_1 | PASS | PASS | not run | 0/0/0; 39 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| random_2 | PASS | PASS | not run | 0/0/0; 50 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| random_3 | PASS | PASS | not run | 0/0/0; 61 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| random_4 | PASS | PASS | not run | 0/0/0; 72 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| random_5 | PASS | PASS | not run | 0/0/0; 83 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| separate_rounding | PASS | PASS | not run | 0/0/0; 12 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| minimum_sizes | PASS | PASS | not run | 0/0/0; 12 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| maximum_sizes | PASS | PASS | not run | 0/0/0; 1035 | — | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| unconfigured | PASS | PASS | not run | 1/5/77; 3 | recover_unconfigured PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_unconfigured | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| header_early_before_tx | PASS | PASS | not run | 1/1/0; 12 | recover_header_early_before_tx PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_header_early_before_tx | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| header_early_after_tx | PASS | PASS | not run | 1/1/77; 13 | recover_header_early_after_tx PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_header_early_after_tx | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| header_missing | PASS | PASS | not run | 1/2/77; 14 | recover_header_missing PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_header_missing | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| unknown_command | PASS | PASS | not run | 1/3/77; 14 | recover_unknown_command PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_unknown_command | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| config_zero | PASS | PASS | not run | 1/4/77; 14 | recover_config_zero PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_config_zero | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| config_too_large | PASS | PASS | not run | 1/4/77; 14 | recover_config_too_large PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_config_too_large | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| data_zero | PASS | PASS | not run | 1/4/77; 14 | recover_data_zero PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_data_zero | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| data_too_large | PASS | PASS | not run | 1/4/77; 14 | recover_data_too_large PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_data_too_large | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| end_nonzero | PASS | PASS | not run | 1/4/77; 14 | recover_end_nonzero PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_end_nonzero | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| config_too_small | PASS | PASS | not run | 1/4/77; 14 | recover_config_too_small PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_config_too_small | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| config_early | PASS | PASS | not run | 1/6/77; 15 | recover_config_early PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_config_early | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| config_missing | PASS | PASS | not run | 1/7/77; 16 | recover_config_missing PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_config_missing | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| data_early | PASS | PASS | not run | 1/8/77; 15 | recover_data_early PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_data_early | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| data_missing | PASS | PASS | not run | 1/9/77; 15 | recover_data_missing PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_data_missing | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| mask_header_keep | PASS | PASS | not run | 1/10/0; 12 | recover_mask_header_keep PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_mask_header_keep | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| mask_header_strb | PASS | PASS | not run | 1/10/0; 12 | recover_mask_header_strb PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_mask_header_strb | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| mask_config_keep | PASS | PASS | not run | 1/10/77; 15 | recover_mask_config_keep PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_mask_config_keep | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| mask_config_strb | PASS | PASS | not run | 1/10/77; 15 | recover_mask_config_strb PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_mask_config_strb | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| mask_data_keep | PASS | PASS | not run | 1/10/77; 15 | recover_mask_data_keep PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_mask_data_keep | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| mask_data_strb | PASS | PASS | not run | 1/10/77; 15 | recover_mask_data_strb PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_mask_data_strb | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| mask_precedes_framing | PASS | PASS | not run | 1/10/0; 12 | recover_mask_precedes_framing PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_mask_precedes_framing | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| framing_precedes_opcode | PASS | PASS | not run | 1/2/77; 14 | recover_framing_precedes_opcode PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_framing_precedes_opcode | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| opcode_precedes_count | PASS | PASS | not run | 1/3/77; 14 | recover_opcode_precedes_count PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_opcode_precedes_count | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| count_precedes_state | PASS | PASS | not run | 1/4/77; 3 | recover_count_precedes_state PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_count_precedes_state | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| queued_suffix_not_consumed | PASS | PASS | not run | 1/9/77; 15 | recover_queued_suffix_not_consumed PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
-| recover_queued_suffix_not_consumed | PASS | PASS | not run | 0/0/0; 14 | recovery PASS | [vectors](vectors/manifest.json), [C](evidence/csim_comparison.json) |
+Source: [model_checks.json](evidence/model_checks.json), including expected and actual bit patterns.
+The operation is float32(float32(a*x)+b), with separate multiply/add rounding.
 
-The intentional queued-suffix test leaves input words after the error.
-Vitis warns about leftover stream data; this is expected for the no-drain
-contract, and the next fresh-stream activation passes. It is not silently
-treated as an error-recovery mechanism. See the scenario row and raw log.
+Every comparison checks output bits, TLAST, TKEEP/TSTRB, halted/error/tx_id
+and consumed-word count. The testbench also checks unread queued input and
+that the final emitted beat has TLAST. Actual results are in
+[csim_beats.csv](evidence/csim_beats.csv) and [csim_status.csv](evidence/csim_status.csv);
+expected results are in [manifest.json](vectors/manifest.json).
 
-## Assumptions
+Every row in the following tables uses its exact scenario key in
+[csim_comparison.json](evidence/csim_comparison.json) and the above actual/expected files.
+“PASS” means bit-exact agreement, not a floating-point tolerance comparison.
 
-Interface choices are already specified above: numeric command/error codes,
-three 32-bit header words, full-width tx_id, word packing, and text/JSON/CSV
-file formats. Other decisions made where the prompt left implementation
-freedom are:
+| Normal scenario | Python/C |
+| --- | --- |
+| basic_hand | PASS |
+| end_only | PASS |
+| multiple_data_repeated_tx | PASS |
+| reconfigure_reset | PASS |
+| random_0 | PASS |
+| random_1 | PASS |
+| random_2 | PASS |
+| random_3 | PASS |
+| random_4 | PASS |
+| random_5 | PASS |
+| separate_rounding | PASS |
+| minimum_sizes | PASS |
+| maximum_sizes | PASS |
 
-1. Use a manually written kernel command loop and Waveflow-generated response
-   serializer/support types. The installed reference's generated header
-   reader discards framing status; the custom reader checks every beat.
-2. Buffer results, rather than input samples, to implement atomic response
-   publication. Do not overlap a DATA result write phase with the next command.
-3. Use fixed-seed random inputs, unit tests for error precedence and
-   zero/oversize boundaries, and poison initial C status values to detect
-   accidental retention. Seeds and full vectors are committed.
-4. Choose XSim Verilog and the reference's xc7z020clg484-1 part, with 10 ns
-   target clock. No physical FPGA deployment or place-and-route is implied.
-5. Use the installed Waveflow revision and read its reference files locally
-   when the old MCP server cannot retrieve them. The actual stdio MCP tool
-   list/glossary call is preserved in [mcp_smoke.json](evidence/mcp_smoke.json);
-   it has no frame-listing tool. No MCP example retrieval is claimed.
-6. Use a plain, untimed Python model, not a SimPy timing predictor. Compare
-   exact word bits rather than the example's tolerance-based float comparator.
-7. Publish status through volatile references. Run 1's nonvolatile startup
-   writes were optimized away; the clarified take-home prompt and final RTL
-   explicitly settle that consequential host-visible behavior.
+In the error table, status means halted/error/tx_id. Each recovery is a
+separate activation named `recover_<scenario>` immediately after its error,
+with fresh streams and CONFIG; all recoveries finish with status 0/0/0.
+Thus each row below documents both the named error and its named recovery.
+The “before tx_id” cases report zero because no transaction ID was read.
 
-The remaining choices concern implementation and file organization; no
-unresolved numerical, error-response, state-reset or host-flow decisions
-remain. The model and Vitis toolchain versions and source hashes are in
+| Error scenario | Status | Error Python/C | Fresh recovery Python/C |
+| --- | --- | --- | --- |
+| unconfigured | 1/5/77 | PASS | PASS |
+| header_early_before_tx | 1/1/0 | PASS | PASS |
+| header_early_after_tx | 1/1/77 | PASS | PASS |
+| header_missing | 1/2/77 | PASS | PASS |
+| unknown_command | 1/3/77 | PASS | PASS |
+| config_zero | 1/4/77 | PASS | PASS |
+| config_too_large | 1/4/77 | PASS | PASS |
+| data_zero | 1/4/77 | PASS | PASS |
+| data_too_large | 1/4/77 | PASS | PASS |
+| end_nonzero | 1/4/77 | PASS | PASS |
+| config_too_small | 1/4/77 | PASS | PASS |
+| config_early | 1/6/77 | PASS | PASS |
+| config_missing | 1/7/77 | PASS | PASS |
+| data_early | 1/8/77 | PASS | PASS |
+| data_missing | 1/9/77 | PASS | PASS |
+| mask_header_keep | 1/10/0 | PASS | PASS |
+| mask_header_strb | 1/10/0 | PASS | PASS |
+| mask_config_keep | 1/10/77 | PASS | PASS |
+| mask_config_strb | 1/10/77 | PASS | PASS |
+| mask_data_keep | 1/10/77 | PASS | PASS |
+| mask_data_strb | 1/10/77 | PASS | PASS |
+| mask_precedes_framing | 1/10/0 | PASS | PASS |
+| framing_precedes_opcode | 1/2/77 | PASS | PASS |
+| opcode_precedes_count | 1/3/77 | PASS | PASS |
+| count_precedes_state | 1/4/77 | PASS | PASS |
+| queued_suffix_not_consumed | 1/9/77 | PASS | PASS |
+
+Malformed commands emit no response; previous responses stay complete.
+For `queued_suffix_not_consumed`, the suffix remains unread. The resulting
+leftover-stream warning is expected; its fresh recovery passes. Sources:
+the named rows in the CSV/JSON files above and [csim.log](evidence/csim.log).
+
+## Review: agent choices
+
+The prompt fixed the arithmetic, atomic error behavior and reset contract.
+The remaining choices were:
+
+| Unspecified detail | Agent choice |
+| --- | --- |
+| Command codes and header layout | CONFIG=1, DATA=2, END=3; three unsigned 32-bit words: code, tx_id, count. TLAST ends each header. |
+| Response encoding | Same layout; CONFIG ACK count=0, DATA count=output length. END has no response. |
+| Error-code numbers | 1/2 header early/missing; 3 unknown command; 4 invalid count; 5 unconfigured; 6/7 CONFIG early/missing; 8/9 DATA early/missing; 10 invalid byte mask. |
+| tx_id on a malformed ID beat | Decode its data when read, including a mask/framing failure on that beat; use zero if the ID was never read. |
+| Buffer placement and scheduling | Buffer results until the whole payload validates; finish one response before reading the next command. |
+| Framing implementation | Manually check every beat; use Waveflow-generated response serializers and stream types. The reference reader discards framing status. |
+| Test/file organization | Untimed Python model; random seed 5005; JSON vectors/verdicts and CSV actuals; initialize C status variables to poison values. |
+| Status writes and tool target | Volatile references retain startup writes in source; use the reference part xc7z020clg484-1 and 10 ns build setting. Physical startup clearing and timing were not verified in this C-only folder. |
+
+Implementation sources: [model.py](model.py), [accelerator.cpp](accelerator.cpp),
+[scenarios.py](scenarios.py), [tb_accelerator.cpp](tb_accelerator.cpp), [run.tcl](run.tcl).
+The installed Waveflow MCP supports the recorded tool-list/glossary call but
+not frame listing or local example retrieval, so reference files were read
+from the local clone. Sources: [mcp_smoke.json](evidence/mcp_smoke.json) and
 [provenance.json](evidence/provenance.json).
 
-## Open Items
+## Limits and run history
 
-External coursework steps are still for the student: review the submission,
-paste the prompt/results or folder link into the course LLM grader, and
-iterate on actual grader feedback if needed. No grader submission, feedback
-or in-class peer prompt exchange has been fabricated. The host has Vitis
-2026.1, not the requested 2025.1, and an older Waveflow MCP without frames;
-rerunning on the exact course versions remains unverified.
+No unresolved functional decisions. Arithmetic is restricted to the prompt's
+finite normal-or-zero domain; subnormal, NaN, infinity and overflow behavior
+are outside the contract. Vitis 2026.1 was used; 2025.1 remains unverified.
+No grader feedback or peer exchange is claimed.
 
-The course-work repository did not exist for the initial exploratory runs.
-It was created during this task, with a specification-only commit before
-the final clean repository build and implementation upload. The final
-repository run follows that commit; no earlier push or backdated history
-is claimed. Raw tool timestamps use EST; user-facing provenance uses
-Asia/Shanghai.
-
-## Run History
-
-| Run | Prompt | Built / changed | Outcome and evidence |
-| --- | --- | --- | --- |
-| 1 | 1 | Float32 model, Waveflow schemas/support, separate multiply/add, command loop and C testbench | All end-of-activation checks passed; no synthesis/co-simulation requested |
-| 2 | 1, startup clarification | Shared volatile status-output correction, then C rerun | All 65 activations PASS; [csim_comparison.json](evidence/csim_comparison.json) |
-| 3 | 1, startup clarification | Clean build in the course-work repository after specification commit 3123b4d | All 65 activations PASS; [csim.log](evidence/csim.log), [csim_comparison.json](evidence/csim_comparison.json). Stopped at C simulation |
+| Run | Change and result |
+| --- | --- |
+| 1 | Implemented model/kernel/testbench; end-of-activation C checks passed. |
+| 2 | Added volatile startup status writes; C rerun passed all 65 activations. |
+| 3 | Clean repository build after specification commit 3123b4d; all 65 activations PASS. Sources: csim.log and csim_comparison.json above. |
+| Documentation revision | Condensed repeated prose/links and paired error/recovery rows; all existing evidence is unchanged. No new kernel run is claimed. |
