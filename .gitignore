@@ -1,0 +1,5 @@
+__pycache__/
+**/hls_project/
+**/vcd/
+.Xil/
+*.jou

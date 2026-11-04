@@ -1,0 +1,9 @@
+**/hls_project/
+**/__pycache__/
+**/.Xil/
+**/vitis*.log
+**/vitis*.jou
+!**/evidence/
+!**/evidence/**
+!**/vectors/
+!**/vectors/**
